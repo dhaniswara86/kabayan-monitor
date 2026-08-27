@@ -8,10 +8,20 @@ function formatTanggal(tanggal){
     ];
 
     const d = new Date(tanggal);
-
     return `${d.getDate()} ${bulan[d.getMonth()]} ${d.getFullYear()}`;
 }
 
+function iconWorkflow(posisi){
+    const map = {
+        "Pelaksana":"📄",
+        "Disposisi Kasi Pelayanan":"📌",
+        "Penyuluh Pajak":"🔍",
+        "Approval Kepala Seksi":"✓",
+        "Approval Kepala Kantor":"✓",
+        "Arsip":"📁"
+    };
+    return map[posisi] || "📄";
+}
 
 function statusDeadline(tanggal){
 
@@ -50,43 +60,27 @@ onclick="location.href='detail-berkas.html?id=${item.id}'">
 <h2>${item.perusahaan}</h2>
 
 <p class="case">
-Nomor Kasus:
-<strong>${item.nomorKasus}</strong>
+${item.nomorKasus}
 </p>
 
-
 <div class="position">
-
 <span>Tahap Saat Ini</span>
-
-<strong>
-● ${item.posisi}
-</strong>
-
+<strong>${iconWorkflow(item.posisi)} ${item.posisi}</strong>
 </div>
 
-
-<div class="progress-label">
-Progress
+<div class="progress-title">
+<span>Progress Penyelesaian</span>
 <strong>${item.progress}%</strong>
 </div>
-
 
 <div class="progress">
 <div style="width:${item.progress}%"></div>
 </div>
 
-
 <div class="deadline">
-
 <span>Deadline</span>
-
-<strong>
-${formatTanggal(item.jatuhTempo)}
-</strong>
-
+<strong>${formatTanggal(item.jatuhTempo)}</strong>
 ${statusDeadline(item.jatuhTempo)}
-
 </div>
 
 </div>
