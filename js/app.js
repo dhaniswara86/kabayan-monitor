@@ -1,0 +1,1 @@
+console.log('Kabayan Monitor Berkas v1 aktif');

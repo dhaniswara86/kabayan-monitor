@@ -1,0 +1,60 @@
+*{box-sizing:border-box}
+body{
+font-family:Arial,sans-serif;
+margin:0;
+background:#f5f7fb;
+color:#1d2939;
+}
+.app{max-width:480px;margin:auto;padding:20px}
+header{margin-bottom:20px}
+header h1{margin:0;font-size:28px}
+.card{
+background:white;
+border-radius:20px;
+padding:20px;
+margin-bottom:16px;
+box-shadow:0 8px 24px rgba(0,0,0,.06)
+}
+.stats{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px
+}
+.stats div{
+padding:15px;
+border-radius:14px;
+background:#eef2ff;
+text-align:center
+}
+.stats b{
+display:block;
+font-size:26px
+}
+.stats span{font-size:13px}
+.green{background:#dcfce7!important}
+.yellow{background:#fef3c7!important}
+.red{background:#fee2e2!important}
+.task{
+border-left:5px solid #f59e0b;
+padding-left:15px
+}
+.progress{
+height:10px;background:#e5e7eb;border-radius:20px;overflow:hidden
+}
+.progress span{
+display:block;width:80%;height:100%;background:#2563eb
+}
+.yellow-text{color:#b45309;font-weight:bold}
+input,button{
+width:100%;
+padding:14px;
+margin-top:10px;
+border-radius:12px;
+border:1px solid #ddd;
+font-size:15px
+}
+button{
+background:#2563eb;
+color:white;
+border:none
+}
