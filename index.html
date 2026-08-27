@@ -2,81 +2,92 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Kabayan Monitor</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<div class="phone">
+<div class="app">
 
-<section class="hero">
-<div class="brand">
-<div class="logo">K</div>
+<header class="hero">
+<div class="topbar">
 <div>
-<h1>Kabayan Monitor</h1>
-<p>Work tracking assistant</p>
+<p class="small">Kabayan Monitor</p>
+<h1>Halo, Faris 👋</h1>
 </div>
+<div class="avatar">ASD</div>
 </div>
 
-<div class="welcome">
-<p>Selamat pagi, Faris</p>
-<h2>Apa yang harus<br>diselesaikan hari ini?</h2>
-</div>
+<p class="question">Apa yang harus<br>diselesaikan hari ini?</p>
 
 <div class="calendar">
-<div class="active">27<br><small>Kam</small></div>
-<div>28<br><small>Jum</small></div>
-<div>29<br><small>Sab</small></div>
-<div>30<br><small>Min</small></div>
+<div class="active"><b>27</b><span>Kam</span></div>
+<div><b>28</b><span>Jum</span></div>
+<div><b>29</b><span>Sab</span></div>
+<div><b>30</b><span>Min</span></div>
+</div>
+</header>
+
+
+<main>
+
+<section class="progress-card">
+<div class="ring">
+<div>
+<strong>75%</strong>
+<span>Selesai</span>
+</div>
+</div>
+
+<div>
+<p>Progress Minggu Ini</p>
+<h2>9 / 12</h2>
+<span>Berkas selesai</span>
 </div>
 </section>
 
-<section class="body">
 
-<div class="today">
+<section class="card">
+<div class="title-row">
+<h2>Today's Task</h2>
+<span>3 Berkas</span>
+</div>
+<p class="muted">Memerlukan perhatian</p>
+
+<div class="mini-task">
 <div>
-<span>Today's Task</span>
-<h2>3 Berkas</h2>
-<p>Memerlukan perhatian</p>
-</div>
-<div class="circle">
-<strong>75%</strong>
-<small>Selesai</small>
-</div>
-</div>
-
-<h3>Deadline Terdekat</h3>
-
-<div class="task">
-<div>
-<span class="danger">Prioritas Tinggi</span>
-<h2>SP2DK PT ABC</h2>
+<strong>SP2DK PT ABC</strong>
 <p>Penelitian berkas</p>
 </div>
-<div class="counter">
-<strong>2</strong>
-<small>hari</small>
+<div class="deadline">
+<b>2</b>
+<span>Hari</span>
 </div>
 </div>
-
-<h3>Progress Mingguan</h3>
-
-<div class="progress-card">
-<div class="bar"><span></span></div>
-<p>9 dari 12 berkas selesai</p>
-</div>
-
-<button>+ Tambah Berkas</button>
-
 </section>
 
+
+<section class="card">
+<h2>Status Berkas</h2>
+<div class="status">
+<div>🟢<b>8</b><span>Aman</span></div>
+<div>🟡<b>3</b><span>Perhatian</span></div>
+<div>🔴<b>1</b><span>Kritis</span></div>
+</div>
+</section>
+
+<button class="add">+ Tambah Berkas</button>
+
+</main>
+
+
 <nav>
-<div>⌂<small>Home</small></div>
-<div>▣<small>Berkas</small></div>
+<div>⌂<span>Home</span></div>
+<div>▣<span>Berkas</span></div>
 <div class="plus">+</div>
-<div>🔔<small>Alert</small></div>
-<div>◉<small>Profil</small></div>
+<div>🔔<span>Alert</span></div>
+<div>◉<span>Profil</span></div>
 </nav>
 
 </div>
