@@ -1,55 +1,74 @@
 const container = document.getElementById("listBerkas");
 
-function hitungDeadline(tanggal){
-    const hariIni = new Date("2026-08-27");
-    const jatuhTempo = new Date(tanggal);
+function formatTanggal(tanggal){
+    const bulan = [
+        "Januari","Februari","Maret","April",
+        "Mei","Juni","Juli","Agustus",
+        "September","Oktober","November","Desember"
+    ];
 
-    const selisih = Math.ceil(
-        (jatuhTempo - hariIni) / (1000*60*60*24)
-    );
+    const d = new Date(tanggal);
 
-    if(selisih < 0){
-        return `<span class="danger">🔴 Terlambat ${Math.abs(selisih)} hari</span>`;
-    }
-
-    if(selisih <= 3){
-        return `<span class="danger">🔴 Kritis (${selisih} hari)</span>`;
-    }
-
-    if(selisih <= 7){
-        return `<span class="warning">🟠 Perhatian (${selisih} hari)</span>`;
-    }
-
-    return `<span class="safe">🟢 Aman (${selisih} hari)</span>`;
+    return `${d.getDate()} ${bulan[d.getMonth()]} ${d.getFullYear()}`;
 }
 
 
-daftarBerkas.forEach((item)=>{
+function statusDeadline(tanggal){
+
+    const hariIni = new Date("2026-08-27");
+    const deadline = new Date(tanggal);
+
+    const hari = Math.ceil(
+        (deadline-hariIni)/(1000*60*60*24)
+    );
+
+    if(hari < 0){
+        return `<span class="danger">🔴 Terlambat ${Math.abs(hari)} hari</span>`;
+    }
+
+    if(hari <= 3){
+        return `<span class="danger">🔴 Kritis • ${hari} hari</span>`;
+    }
+
+    if(hari <= 7){
+        return `<span class="warning">🟠 Perhatian • ${hari} hari</span>`;
+    }
+
+    return `<span class="safe">🟢 Aman • ${hari} hari</span>`;
+}
+
+
+daftarBerkas.forEach(item=>{
 
 container.innerHTML += `
 
 <div class="card"
 onclick="location.href='detail-berkas.html?id=${item.id}'">
 
-
-<span class="tag">
-${item.jenis}
-</span>
-
+<span class="tag">${item.jenis}</span>
 
 <h2>${item.perusahaan}</h2>
 
-
-<p>
+<p class="case">
 Nomor Kasus:
 <strong>${item.nomorKasus}</strong>
 </p>
 
 
 <div class="position">
-Posisi Saat Ini
 
-<strong>● ${item.posisi}</strong>
+<span>Tahap Saat Ini</span>
+
+<strong>
+● ${item.posisi}
+</strong>
+
+</div>
+
+
+<div class="progress-label">
+Progress
+<strong>${item.progress}%</strong>
 </div>
 
 
@@ -57,22 +76,18 @@ Posisi Saat Ini
 <div style="width:${item.progress}%"></div>
 </div>
 
-<p class="percent">
-${item.progress}% selesai
-</p>
-
 
 <div class="deadline">
-Deadline:
-<br>
-${item.jatuhTempo}
 
-<br><br>
+<span>Deadline</span>
 
-${hitungDeadline(item.jatuhTempo)}
+<strong>
+${formatTanggal(item.jatuhTempo)}
+</strong>
+
+${statusDeadline(item.jatuhTempo)}
 
 </div>
-
 
 </div>
 
