@@ -1,1 +1,1 @@
-console.log('Kabayan Monitor v5');
+console.log('Kabayan Monitor v6');
