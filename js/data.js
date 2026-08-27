@@ -1,32 +1,43 @@
 const daftarBerkas = [
-    {
-        id: "001",
-        nomorKasus: "C0014822877",
-        perusahaan: "PANFILA INDOSARI",
-        jenis: "PYSTT",
-        posisi: "Pelaksana",
-        progress: 10,
-        jatuhTempo: "2026-09-02",
-        status: "Dalam Proses"
-    },
-    {
-        id: "002",
-        nomorKasus: "SPTLB-2026-001",
-        perusahaan: "PT ABC INDONESIA",
-        jenis: "SPTLB Pendahuluan",
-        posisi: "Penyuluh Pajak",
-        progress: 50,
-        jatuhTempo: "2026-09-05",
-        status: "Dalam Proses"
-    },
-    {
-        id: "003",
-        nomorKasus: "REST-2026-002",
-        perusahaan: "PT XYZ",
-        jenis: "SPTLB Pemeriksaan",
-        posisi: "Approval Kepala Seksi",
-        progress: 70,
-        jatuhTempo: "2026-09-10",
-        status: "Review"
-    }
+{
+    id:"001",
+    nomorKasus:"C0014822877",
+    perusahaan:"PANFILA INDOSARI",
+    jenis:"PYSTT",
+    posisi:"Penyuluh Pajak",
+    jatuhTempo:"2026-09-02",
+
+    workflow:[
+        {
+            tahap:"Pelaksana",
+            status:"selesai",
+            tanggal:"27 Agustus 2026",
+            petugas:"Andi"
+        },
+        {
+            tahap:"Disposisi Kasi Pelayanan",
+            status:"selesai",
+            tanggal:"28 Agustus 2026",
+            petugas:"Kasi Pelayanan"
+        },
+        {
+            tahap:"Penyuluh Pajak",
+            status:"aktif",
+            tanggal:"29 Agustus 2026",
+            petugas:"Faris"
+        },
+        {
+            tahap:"Approval Kepala Seksi",
+            status:"menunggu"
+        },
+        {
+            tahap:"Approval Kepala Kantor",
+            status:"menunggu"
+        },
+        {
+            tahap:"Arsip",
+            status:"menunggu"
+        }
+    ]
+}
 ];

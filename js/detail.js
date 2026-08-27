@@ -1,80 +1,76 @@
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 
-const data = daftarBerkas.find(
-(item)=> item.id === id
-);
+const data = daftarBerkas.find(item => item.id === id);
 
+const container = document.getElementById("detailBerkas");
 
 if(!data){
 
-document.getElementById("detailBerkas").innerHTML =
-"<p>Berkas tidak ditemukan</p>";
+container.innerHTML = `
+<div class="card">
+Berkas tidak ditemukan
+</div>
+`;
 
 }else{
 
+document.getElementById("namaPerusahaan").innerHTML = data.perusahaan;
+document.getElementById("jenisBerkas").innerHTML = data.jenis;
 
-document.getElementById("namaPerusahaan").innerHTML =
-data.perusahaan;
 
+const selesai = data.workflow.filter(
+x=>x.status==="selesai"
+).length;
 
-document.getElementById("jenisBerkas").innerHTML =
-data.jenis;
+const progress = Math.round(
+(selesai + 0.5) / data.workflow.length * 100
+);
 
 
 let timeline = "";
 
+data.workflow.forEach(item=>{
 
-const tahapan = [
-"Pelaksana",
-"Disposisi Kasi Pelayanan",
-"Penyuluh Pajak",
-"Approval Kepala Seksi",
-"Approval Kepala Kantor",
-"Arsip"
-];
+let icon="○";
+let cls="";
 
+if(item.status==="selesai"){
+icon="✓";
+cls="done";
+}
 
-tahapan.forEach((tahap,index)=>{
-
-let aktif =
-tahap === data.posisi;
-
-
-let selesai =
-index < Math.floor(data.progress / 20);
+if(item.status==="aktif"){
+icon="●";
+cls="active";
+}
 
 
 timeline += `
 
-<div class="step ${aktif ? "active":""} ${selesai ? "done":""}">
+<div class="step ${cls}">
 
-<div class="icon">
-
-${selesai ? "✓" : aktif ? "●" : "○"}
-
-</div>
-
+<div class="icon">${icon}</div>
 
 <div>
-
-<strong>
-${tahap}
-</strong>
-
+<strong>${item.tahap}</strong>
 
 <p>
-
 ${
-aktif 
-? "Sedang berjalan"
-: selesai
+item.status==="selesai"
 ? "Selesai"
+: item.status==="aktif"
+? "Sedang berjalan"
 : "Menunggu"
 }
-
 </p>
 
+${
+item.tanggal
+?
+`<small>${item.tanggal} - ${item.petugas}</small>`
+:""
+}
 
 </div>
 
@@ -85,61 +81,43 @@ aktif
 });
 
 
-document.getElementById("detailBerkas").innerHTML = `
+container.innerHTML = `
+
+<div class="card">
+
+<span class="tag">${data.jenis}</span>
+
+<h2>${data.perusahaan}</h2>
+
+<p>Nomor Kasus</p>
+
+<strong>${data.nomorKasus}</strong>
 
 
-<div class="summary card">
-
-<span class="tag">
-${data.jenis}
-</span>
-
-
-<h2>
-${data.perusahaan}
-</h2>
-
-
-<p>
-Nomor Kasus
-</p>
-
-<strong>
-${data.nomorKasus}
-</strong>
-
-
-<div class="info">
+<div class="summary-box">
 
 <div>
 <span>Progress</span>
-<b>${data.progress}%</b>
+<b>${progress}%</b>
 </div>
-
 
 <div>
-<span>Deadline</span>
-<b>${data.jatuhTempo}</b>
+<span>Posisi</span>
+<b>${data.posisi}</b>
 </div>
-
-
-</div>
-
 
 </div>
 
+</div>
 
 
 <div class="card">
 
-<h2>
-Perjalanan Berkas
-</h2>
+<h2>Perjalanan Berkas</h2>
 
 ${timeline}
 
 </div>
-
 
 `;
 
