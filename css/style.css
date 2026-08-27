@@ -1,86 +1,114 @@
 *{box-sizing:border-box}
-
 body{
 margin:0;
+background:#edf1ff;
 font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-background:#e8edff;
 }
 
 .phone{
 max-width:480px;
 margin:auto;
-min-height:100vh;
-padding-bottom:90px;
 background:white;
+min-height:100vh;
+padding-bottom:100px;
 }
 
 .hero{
-padding:28px 22px 35px;
-background:linear-gradient(160deg,#253bff,#738cff);
-border-radius:0 0 35px 35px;
+background:linear-gradient(160deg,#243bff,#7b92ff);
 color:white;
+padding:25px 22px 35px;
+border-radius:0 0 38px 38px;
 }
 
-.top{
+.brand{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.logo{
+width:45px;
+height:45px;
+border-radius:15px;
+background:white;
+color:#243bff;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:800;
+font-size:22px;
+}
+
+.brand h1{
+margin:0;
+font-size:20px;
+}
+
+.brand p{
+margin:2px 0;
+opacity:.8;
+font-size:12px;
+}
+
+.welcome{
+margin-top:30px;
+}
+
+.welcome p{
+opacity:.8;
+}
+
+.welcome h2{
+font-size:32px;
+line-height:1.15;
+margin:8px 0;
+}
+
+.calendar{
+display:flex;
+gap:10px;
+margin-top:25px;
+}
+
+.calendar div{
+background:rgba(255,255,255,.18);
+padding:12px;
+border-radius:18px;
+text-align:center;
+flex:1;
+}
+
+.calendar .active{
+background:white;
+color:#243bff;
+}
+
+.body{
+padding:22px;
+}
+
+.today{
+background:#f8fafc;
+border-radius:28px;
+padding:20px;
 display:flex;
 justify-content:space-between;
 align-items:center;
 }
 
-.top p{
-margin:0;
-opacity:.8;
+.today span{
+color:#64748b;
 }
 
-.top h1{
+.today h2{
 margin:5px 0;
-font-size:32px;
-}
-
-.avatar{
-width:48px;
-height:48px;
-border-radius:50%;
-background:white;
-color:#253bff;
-display:flex;
-align-items:center;
-justify-content:center;
-font-weight:bold;
-}
-
-.date{
-margin-top:25px;
-opacity:.9;
-}
-
-.progress-card{
-margin-top:25px;
-background:rgba(255,255,255,.16);
-backdrop-filter:blur(10px);
-border-radius:28px;
-padding:22px;
-display:flex;
-align-items:center;
-gap:20px;
 }
 
 .circle{
-width:120px;
-height:120px;
+width:90px;
+height:90px;
 border-radius:50%;
-background:conic-gradient(#ff725e 78%,rgba(255,255,255,.3) 0);
-display:flex;
-align-items:center;
-justify-content:center;
-}
-
-.circle div{
-width:92px;
-height:92px;
-background:white;
-border-radius:50%;
-color:#253bff;
+background:conic-gradient(#ff725e 75%,#dbe4ff 0);
 display:flex;
 flex-direction:column;
 align-items:center;
@@ -88,27 +116,10 @@ justify-content:center;
 }
 
 .circle strong{
-font-size:26px;
+font-size:22px;
 }
 
-.circle span{
-font-size:12px;
-}
-
-.progress-text p{
-margin:0;
-opacity:.8;
-}
-
-.content{
-padding:25px 20px;
-}
-
-.content h2{
-font-size:20px;
-}
-
-.task-card{
+.task{
 background:#f8fafc;
 border-radius:25px;
 padding:20px;
@@ -117,66 +128,64 @@ justify-content:space-between;
 align-items:center;
 }
 
-.tag{
-background:#ffe7df;
-color:#f05b45;
-padding:7px 12px;
+.task h2{
+margin:12px 0 5px;
+font-size:20px;
+}
+
+.danger{
+background:#ffe4de;
+color:#ef5b45;
+padding:6px 12px;
 border-radius:20px;
 font-size:12px;
 }
 
-.days{
-background:#253bff;
+.counter{
+background:#243bff;
 color:white;
 width:70px;
 height:70px;
-border-radius:20px;
+border-radius:22px;
 display:flex;
 flex-direction:column;
-align-items:center;
 justify-content:center;
+align-items:center;
 }
 
-.days strong{
-font-size:28px;
+.counter strong{
+font-size:30px;
 }
 
-.status-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:12px;
-}
-
-.status-grid div{
+.progress-card{
 background:#f8fafc;
-border-radius:22px;
-padding:15px;
-text-align:center;
-}
-
-.status-grid span{
-font-size:25px;
-}
-
-.status-grid strong{
-display:block;
-font-size:25px;
-}
-
-.status-grid p{
-margin:5px 0;
-color:#64748b;
-}
-
-.action button{
-width:100%;
-border:0;
-padding:17px;
+padding:20px;
 border-radius:25px;
-background:#253bff;
+}
+
+.bar{
+height:12px;
+background:#dbe4ff;
+border-radius:20px;
+}
+
+.bar span{
+display:block;
+height:100%;
+width:75%;
+background:#243bff;
+border-radius:20px;
+}
+
+button{
+width:100%;
+margin-top:20px;
+padding:17px;
+border:0;
+border-radius:25px;
+background:#243bff;
 color:white;
 font-size:16px;
-margin-top:25px;
 }
 
 nav{
@@ -184,21 +193,21 @@ position:fixed;
 bottom:15px;
 left:50%;
 transform:translateX(-50%);
-max-width:440px;
 width:90%;
-height:70px;
+max-width:440px;
+height:72px;
 background:white;
 border-radius:35px;
-box-shadow:0 15px 40px rgba(0,0,0,.15);
 display:flex;
 justify-content:space-around;
 align-items:center;
+box-shadow:0 15px 35px rgba(0,0,0,.15);
 }
 
 nav div{
 text-align:center;
 font-size:22px;
-color:#5265d8;
+color:#243bff;
 }
 
 nav small{
@@ -207,12 +216,13 @@ font-size:11px;
 }
 
 .plus{
+background:#ff725e;
+color:white!important;
 width:55px;
 height:55px;
 border-radius:50%;
-background:#ff725e;
-color:white!important;
 display:flex;
 align-items:center;
 justify-content:center;
+font-size:32px;
 }
