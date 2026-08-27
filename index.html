@@ -3,46 +3,106 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kabayan Monitor Berkas</title>
+<title>Kabayan Monitor</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
 <div class="app">
-<header>
+
+<header class="navbar">
+<div class="brand">
+<div class="logo">K</div>
+<div>
 <h1>Kabayan Monitor</h1>
-<p>Monitoring Penyelesaian Berkas</p>
+<p>Pantau pekerjaan. Selesaikan tepat waktu.</p>
+</div>
+</div>
 </header>
 
-<section class="card welcome">
-<h2>Selamat Datang, Faris</h2>
-<div class="stats">
-<div><b>12</b><span>Berkas Aktif</span></div>
-<div class="green"><b>8</b><span>Aman</span></div>
-<div class="yellow"><b>3</b><span>Mendekati</span></div>
-<div class="red"><b>1</b><span>Terlambat</span></div>
+<main>
+
+<section class="hero">
+<p class="hello">Selamat pagi, Faris 👋</p>
+<h2>Apa yang perlu<br>diselesaikan hari ini?</h2>
+</section>
+
+<section class="priority card">
+<div>
+<span class="label">Prioritas Hari Ini</span>
+<h3>3 berkas membutuhkan tindakan</h3>
+</div>
+<button>Lihat</button>
+</section>
+
+<section class="summary">
+<div class="card stat">
+<strong>12</strong>
+<span>Berkas Aktif</span>
+</div>
+<div class="card stat">
+<strong>8</strong>
+<span>Aman</span>
+</div>
+<div class="card stat warning">
+<strong>3</strong>
+<span>Perhatian</span>
+</div>
+<div class="card stat danger">
+<strong>1</strong>
+<span>Terlambat</span>
 </div>
 </section>
 
-<section class="card">
-<h2>Deadline Terdekat</h2>
-<div class="task">
+<section>
+<h3 class="section-title">Deadline Terdekat</h3>
+
+<div class="card task">
+<div class="top">
+<div>
 <h3>SP2DK PT ABC</h3>
-<p>Jatuh tempo: 2 hari lagi</p>
-<div class="progress"><span></span></div>
-<p class="status yellow-text">Segera Diselesaikan</p>
+<p>Penelitian</p>
 </div>
+<span class="badge">5 Hari</span>
+</div>
+
+<div class="progress">
+<span></span>
+</div>
+
+<div class="meta">
+<span>Deadline</span>
+<strong>02 September 2026</strong>
+</div>
+
+<button class="primary">Lihat Detail</button>
+</div>
+
 </section>
 
-<section class="card">
-<h2>Tambah Berkas</h2>
-<input placeholder="Nomor Berkas">
-<input placeholder="Jenis Berkas">
-<input type="date">
-<input type="date">
-<button>Simpan Berkas</button>
+<section>
+<h3 class="section-title">Aktivitas Terakhir</h3>
+
+<div class="timeline card">
+<p>✓ Berkas diterima</p>
+<p>✓ Analisis awal selesai</p>
+<p>● Menunggu review</p>
+</div>
+
 </section>
 
+</main>
+
+<nav class="bottom-nav">
+<span>🏠<small>Beranda</small></span>
+<span>📂<small>Berkas</small></span>
+<span class="add">＋</span>
+<span>🔔<small>Notifikasi</small></span>
+<span>👤<small>Profil</small></span>
+</nav>
+
 </div>
+
 <script src="js/app.js"></script>
 </body>
 </html>
