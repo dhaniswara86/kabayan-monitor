@@ -1,4 +1,4 @@
 const currentUser = {
-    nama: "Faris Yustian",
+    nama: "Angga Sukma Dhaniswara",
     role: "Penyuluh Pajak"
 };
