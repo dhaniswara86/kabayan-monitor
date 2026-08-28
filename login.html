@@ -2,71 +2,27 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kabayan Monitor</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<title>Login to Kabayan</title>
 <link rel="stylesheet" href="css/login.css">
 </head>
-
 <body>
-
-<header class="topbar">
-    <div class="brand">Kabayan Monitor</div>
-    <nav>
-        <a>Masuk</a>
-        <a>Buat Akun</a>
-        <a>Bantuan</a>
-    </nav>
-</header>
-
-
-<main class="container">
-
-<img class="logo" src="assets/logo-asd.svg" alt="Logo">
-
-
-<h1>Kabayan Monitor</h1>
-
-<p class="subtitle">
-Kelola workflow berkas secara aman dan terintegrasi.
-</p>
-
-
-<div class="form-area">
-
-<input id="email" type="email" placeholder="Email">
-
-<input id="password" type="password" placeholder="Password">
-
-
-<div class="info">
-<div class="info-icon">●</div>
-<p>
-Informasi akun Kabayan digunakan untuk memberikan akses
-secara aman sesuai dengan peran pengguna dan aktivitas workflow.
-</p>
-</div>
-
-
-<button onclick="login()">
-Masuk
-</button>
-
-
+<main class="page">
+<div class="glow"></div>
+<section class="login-container">
+<div class="logo-circle"><img src="assets/logo-asd.svg"></div>
+<h1>Login to Kabayan</h1>
+<p class="subtitle">Masuk untuk melanjutkan ke Kabayan Monitor</p>
+<div class="input-box"><input id="email" placeholder="Email"><span>✉</span></div>
+<div class="input-box"><input id="password" type="password" placeholder="Password"><span>◉</span></div>
+<button onclick="login()">LOGIN</button>
+<a class="forgot">Forgot password?</a>
 <div id="message"></div>
-
-</div>
-
+</section>
+<footer>Kabayan Monitor © 2026</footer>
 </main>
-
-
-<footer>
-© 2026 Kabayan Monitor
-</footer>
-
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="js/supabase.js"></script>
 <script src="js/auth.js"></script>
-
 </body>
 </html>
