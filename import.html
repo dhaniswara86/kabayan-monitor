@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Import Data Kabayan</title>
+<link rel="stylesheet" href="css/import.css">
+</head>
+<body>
+<div class="app">
+<header>
+<h1>Import Data</h1>
+<p>Excel → Kabayan Monitor</p>
+</header>
+
+<div class="card">
+<h2>Upload Excel</h2>
+<input id="file" type="file" accept=".xlsx,.xls">
+<button onclick="previewExcel()">Preview Data</button>
+</div>
+
+<div class="card hidden" id="previewBox">
+<h2>Preview Data</h2>
+<div id="preview"></div>
+<button onclick="importData()">Import ke Kabayan</button>
+</div>
+
+<div id="message"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+<script src="js/supabase.js"></script>
+<script src="js/import.js"></script>
+</body>
+</html>
