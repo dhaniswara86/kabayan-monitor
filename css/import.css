@@ -1,0 +1,10 @@
+*{box-sizing:border-box}
+body{margin:0;background:#f7f8ff;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif}
+.app{max-width:430px;margin:auto;background:white;min-height:100vh;padding:30px 22px}
+header p{color:#8b93a7}
+.card{background:#fafaff;border-radius:24px;padding:22px;margin-top:20px}
+input{width:100%;padding:14px;border-radius:15px;border:1px solid #ddd}
+button{width:100%;margin-top:15px;padding:14px;border:0;border-radius:20px;background:#5548e8;color:white}
+.hidden{display:none}
+table{width:100%;font-size:12px;border-collapse:collapse}
+td,th{padding:8px;border-bottom:1px solid #eee}
