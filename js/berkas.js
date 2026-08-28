@@ -1,14 +1,12 @@
 const container = document.getElementById("listBerkas");
 
 function formatTanggal(tanggal){
-    const bulan = [
-        "Januari","Februari","Maret","April",
-        "Mei","Juni","Juli","Agustus",
-        "September","Oktober","November","Desember"
-    ];
-
     const d = new Date(tanggal);
-    return `${d.getDate()} ${bulan[d.getMonth()]} ${d.getFullYear()}`;
+    return d.toLocaleDateString("id-ID", {
+        day:"numeric",
+        month:"long",
+        year:"numeric"
+    });
 }
 
 function iconWorkflow(posisi){
@@ -24,67 +22,68 @@ function iconWorkflow(posisi){
 }
 
 function statusDeadline(tanggal){
+    const hari = Math.ceil((new Date(tanggal)-new Date())/(1000*60*60*24));
 
-    const hariIni = new Date("2026-08-27");
-    const deadline = new Date(tanggal);
-
-    const hari = Math.ceil(
-        (deadline-hariIni)/(1000*60*60*24)
-    );
-
-    if(hari < 0){
+    if(hari < 0)
         return `<span class="danger">🔴 Terlambat ${Math.abs(hari)} hari</span>`;
-    }
 
-    if(hari <= 3){
+    if(hari <= 3)
         return `<span class="danger">🔴 Kritis • ${hari} hari</span>`;
-    }
 
-    if(hari <= 7){
+    if(hari <= 7)
         return `<span class="warning">🟠 Perhatian • ${hari} hari</span>`;
-    }
 
     return `<span class="safe">🟢 Aman • ${hari} hari</span>`;
 }
 
+async function loadBerkas(){
 
-daftarBerkas.forEach(item=>{
+    const {data,error}=await supabaseClient
+        .from("berkas")
+        .select("*")
+        .order("created_at",{ascending:false});
 
-container.innerHTML += `
+    if(error){
+        console.error(error);
+        return;
+    }
 
-<div class="card"
-onclick="location.href='detail-berkas.html?id=${item.id}'">
+    container.innerHTML="";
 
-<span class="tag">${item.jenis}</span>
+    data.forEach(item=>{
 
-<h2>${item.perusahaan}</h2>
+        container.innerHTML += `
+        <div class="card"
+        onclick="location.href='detail-berkas.html?id=${item.id}'">
 
-<p class="case">
-${item.nomorKasus}
-</p>
+        <span class="tag">${item.jenis_permohonan}</span>
 
-<div class="position">
-<span>Tahap Saat Ini</span>
-<strong>${iconWorkflow(item.posisi)} ${item.posisi}</strong>
-</div>
+        <h2>${item.nama_perusahaan}</h2>
 
-<div class="progress-title">
-<span>Progress Penyelesaian</span>
-<strong>${item.progress}%</strong>
-</div>
+        <p class="case">${item.nomor_kasus}</p>
 
-<div class="progress">
-<div style="width:${item.progress}%"></div>
-</div>
+        <div class="position">
+        <span>Tahap Saat Ini</span>
+        <strong>${iconWorkflow(item.posisi)} ${item.posisi}</strong>
+        </div>
 
-<div class="deadline">
-<span>Deadline</span>
-<strong>${formatTanggal(item.jatuhTempo)}</strong>
-${statusDeadline(item.jatuhTempo)}
-</div>
+        <div class="progress-title">
+        <span>Progress Penyelesaian</span>
+        <strong>${item.progress}%</strong>
+        </div>
 
-</div>
+        <div class="progress">
+        <div style="width:${item.progress}%"></div>
+        </div>
 
-`;
+        <div class="deadline">
+        <span>Deadline</span>
+        <strong>${formatTanggal(item.jatuh_tempo)}</strong>
+        ${statusDeadline(item.jatuh_tempo)}
+        </div>
 
-});
+        </div>`;
+    });
+}
+
+loadBerkas();
