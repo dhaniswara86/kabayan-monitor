@@ -1,136 +1,151 @@
-.search{
+*{
+box-sizing:border-box;
+}
+
+body{
+margin:0;
+background:#f7f8ff;
+font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
+color:#111827;
+}
+
+.app{
+max-width:430px;
+min-height:100vh;
+margin:auto;
 background:white;
-height:48px;
+padding:28px 22px 100px;
+}
+
+header{
 display:flex;
 align-items:center;
-padding:0 18px;
-border-radius:18px;
-color:#9ca3af;
-box-shadow:0 8px 24px rgba(0,0,0,.05);
+gap:15px;
+}
+
+.back{
+width:42px;
+height:42px;
+border:0;
+border-radius:50%;
+background:#f0efff;
+color:#5548e8;
+font-size:22px;
+}
+
+h1{
+margin:0;
+font-size:34px;
+}
+
+header p{
+margin:5px 0 0;
+color:#8b93a7;
+}
+
+.search input{
+margin-top:28px;
+width:100%;
+height:52px;
+border-radius:28px;
+border:1px solid #e1e4ef;
+padding:0 20px;
+font-size:16px;
+}
+
+.filters{
+display:flex;
+gap:8px;
+overflow:auto;
 margin:20px 0;
 }
 
-.filter{
-display:flex;
-gap:8px;
-overflow-x:auto;
-padding-bottom:8px;
-scrollbar-width:none;
-}
-
-.filter::-webkit-scrollbar{
-display:none;
-}
-
-.filter button{
+.filters button{
 border:0;
-background:white;
 padding:10px 16px;
-border-radius:22px;
+border-radius:20px;
+background:#f1f2f8;
 white-space:nowrap;
-color:#64748b;
 }
 
-.filter .active{
-background:#2563eb;
+.filters .active{
+background:#5548e8;
 color:white;
 }
 
 .card{
-background:white;
-border-radius:28px;
+background:#fff;
+border:1px solid #edf0f7;
+border-radius:24px;
 padding:20px;
-margin-top:16px;
-box-shadow:0 8px 24px rgba(0,0,0,.05);
-cursor:pointer;
+margin-bottom:15px;
+box-shadow:0 8px 25px rgba(0,0,0,.04);
 }
 
-.tag{
-font-size:12px;
-background:#eff6ff;
-color:#2563eb;
-padding:6px 12px;
-border-radius:20px;
-}
-
-.card h2{
-font-size:21px;
-margin:16px 0 8px;
+.company{
+font-size:20px;
+font-weight:700;
 }
 
 .case{
-color:#64748b;
-font-weight:600;
+color:#8b93a7;
+margin-top:5px;
 }
 
 .position{
-background:#f8fafc;
-padding:14px;
-border-radius:18px;
-margin:18px 0;
-}
-
-.position span,
-.deadline span{
-font-size:12px;
-color:#64748b;
-}
-
-.position strong{
-display:block;
-margin-top:7px;
-color:#2563eb;
-}
-
-.progress-title{
-display:flex;
-justify-content:space-between;
-color:#64748b;
-font-size:14px;
-}
-
-.progress-title strong{
-color:#111827;
+display:inline-block;
+margin-top:15px;
+background:#eef0ff;
+color:#5548e8;
+padding:7px 12px;
+border-radius:15px;
+font-size:13px;
 }
 
 .progress{
-height:9px;
-background:#e5e7eb;
-border-radius:20px;
-overflow:hidden;
-margin:10px 0 18px;
+margin-top:18px;
+height:8px;
+background:#eee;
+border-radius:10px;
 }
 
-.progress div{
+.progress span{
+display:block;
 height:100%;
-background:#2563eb;
+background:linear-gradient(90deg,#5548e8,#55c9dc);
+border-radius:10px;
 }
 
 .deadline{
+margin-top:12px;
+color:#6b7280;
+font-size:14px;
+}
+
+nav{
+position:fixed;
+bottom:15px;
+left:50%;
+transform:translateX(-50%);
+width:85%;
+height:70px;
+background:white;
+border-radius:25px;
 display:flex;
-flex-direction:column;
-gap:5px;
+justify-content:space-around;
+align-items:center;
+box-shadow:0 10px 30px #ddd;
 }
 
-.deadline strong{
-font-size:16px;
+nav div{
+text-align:center;
+color:#999;
 }
 
-.safe{
-color:#16a34a;
-font-weight:600;
+nav .active{
+color:#5548e8;
 }
 
-.warning{
-color:#d97706;
-font-weight:600;
-}
-
-.danger{
-color:#dc2626;
-font-weight:600;
-}
-
-.app{
-padding-bottom:180px;
+nav small{
+display:block;
 }
