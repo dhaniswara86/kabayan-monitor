@@ -3,32 +3,71 @@ const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 
 
+const workflow = [
+    "Pelaksana",
+    "Disposisi Kasi Pelayanan",
+    "Penyuluh Pajak",
+    "Approval Kepala Seksi",
+    "Approval Kepala Kantor",
+    "Arsip"
+];
+
+
+function formatTanggal(tanggal){
+
+    if(!tanggal) return "-";
+
+    const d = new Date(tanggal);
+
+    return d.toLocaleDateString(
+        "id-ID",
+        {
+            day:"numeric",
+            month:"long",
+            year:"numeric"
+        }
+    );
+}
+
+
+
 async function loadDetail(){
 
-    const {data,error} = await supabaseClient
+
+    const {data,error}=await supabaseClient
         .from("berkas")
         .select("*")
-        .eq("id", id)
+        .eq("id",id)
         .single();
 
 
+
     if(error){
+
         console.error(error);
+
         return;
+
     }
 
 
-    console.log(data);
+
+    const posisiAktif =
+        workflow.indexOf(data.posisi);
+
 
 
     document.querySelector(".app").innerHTML = `
+
 
     <div class="brand">
         Kabayan Monitor
     </div>
 
 
+
     <h1>${data.nama_perusahaan}</h1>
+
 
 
     <p>
@@ -37,65 +76,118 @@ async function loadDetail(){
     </p>
 
 
+
     <p>
     Jenis Permohonan:
-    ${data.jenis_permohonan}
+    <b>${data.jenis_permohonan}</b>
     </p>
+
+
+
+
+    <div class="info-box">
+
+        <span>Posisi Saat Ini</span>
+
+        <strong>
+        🔵 ${data.posisi}
+        </strong>
+
+    </div>
+
+
+
+    <div class="progress">
+
+        <div 
+        style="
+        width:${data.progress}%
+        ">
+        </div>
+
+    </div>
+
+
+
+    <h3>
+    ${data.progress}% selesai
+    </h3>
+
+
+
+    <p>
+    Deadline:
+    <b>
+    ${formatTanggal(data.jatuh_tempo)}
+    </b>
+    </p>
+
+
 
 
     <div class="workflow">
 
-        <h2>Progress Berkas</h2>
+
+    <h2>
+    Alur Penyelesaian
+    </h2>
 
 
-        <div class="step active">
-        ● Pelaksana
+    ${
+    workflow.map((item,index)=>{
+
+
+        let status="";
+
+
+        if(index < posisiAktif){
+
+            status="done";
+
+        }
+
+        else if(index===posisiAktif){
+
+            status="active";
+
+        }
+
+
+        return `
+
+        <div class="step ${status}">
+
+        ${index<=posisiAktif?"●":"○"}
+
+        ${item}
+
         </div>
 
-        <div class="line"></div>
+        ${
+        index < workflow.length-1
+        ?
+        '<div class="line"></div>'
+        :
+        ''
+        }
+
+        `;
 
 
-        <div class="step">
-        ● Disposisi Kasi Pelayanan
-        </div>
+    }).join("")
+    }
 
-
-        <div class="line"></div>
-
-
-        <div class="step">
-        ● Penyuluh Pajak
-        </div>
-
-
-        <div class="line"></div>
-
-
-        <div class="step">
-        ○ Approval Kepala Seksi
-        </div>
-
-
-        <div class="line"></div>
-
-
-        <div class="step">
-        ○ Approval Kepala Kantor
-        </div>
-
-
-        <div class="line"></div>
-
-
-        <div class="step">
-        ○ Arsip
-        </div>
 
 
     </div>
 
+
+
     `;
+
+
 }
+
 
 
 loadDetail();
