@@ -2,152 +2,136 @@
 box-sizing:border-box;
 }
 
-body{
+html,body{
 margin:0;
-font-family:
--apple-system,
-BlinkMacSystemFont,
-"SF Pro Display",
-"Helvetica Neue",
-Arial,
-sans-serif;
+padding:0;
+min-height:100%;
+font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Arial,sans-serif;
 color:#1d1d1f;
 }
 
-.page{
+body{
+background:#f5f5f7;
+}
+
+.login-page{
 min-height:100dvh;
+padding:env(safe-area-inset-top) 24px env(safe-area-inset-bottom);
 display:flex;
+flex-direction:column;
 align-items:center;
 justify-content:center;
-overflow:hidden;
-background:#f5f5f7;
 position:relative;
-padding:24px;
 }
 
-.ambient{
+.login-page:before{
+content:"";
 position:absolute;
-width:600px;
-height:600px;
-background:radial-gradient(circle,rgba(37,99,235,.18),transparent 65%);
-top:-250px;
-left:50%;
-transform:translateX(-50%);
-filter:blur(30px);
+width:420px;
+height:420px;
+top:-220px;
+background:radial-gradient(circle,rgba(0,113,227,.18),transparent 65%);
+z-index:0;
 }
 
-.content{
+.logo,
+h1,
+.tagline,
+.login-box,
+footer{
 position:relative;
-z-index:2;
-width:100%;
-max-width:420px;
-text-align:center;
+z-index:1;
 }
 
 .logo{
 font-size:14px;
-font-weight:600;
-letter-spacing:3px;
+font-weight:700;
+letter-spacing:5px;
 color:#6e6e73;
+margin-bottom:10px;
 }
 
-.brand h1{
-font-size:72px;
+h1{
+font-size:58px;
+letter-spacing:-3px;
 line-height:1;
-letter-spacing:-4px;
-margin:14px 0 20px;
+margin:0 0 18px;
 font-weight:700;
 }
 
-.brand p{
-font-size:21px;
+.tagline{
+font-size:19px;
 line-height:1.4;
 color:#6e6e73;
-margin:0 auto 48px;
-max-width:360px;
+text-align:center;
+max-width:320px;
+margin:0 0 36px;
 }
 
-
-.login-card{
-background:rgba(255,255,255,.72);
-backdrop-filter:blur(25px);
--webkit-backdrop-filter:blur(25px);
-border:1px solid rgba(0,0,0,.06);
-border-radius:28px;
-padding:32px;
-box-shadow:0 20px 50px rgba(0,0,0,.08);
-text-align:left;
+.login-box{
+width:100%;
+max-width:380px;
+background:white;
+border-radius:24px;
+padding:28px;
+box-shadow:0 15px 40px rgba(0,0,0,.08);
 }
 
-.login-card h2{
-font-size:32px;
+.login-box h2{
+font-size:30px;
 letter-spacing:-1px;
 margin:0 0 8px;
 }
 
-.subtitle{
+.helper{
 color:#6e6e73;
-margin:0 0 28px;
+margin:0 0 24px;
 }
 
-.field{
-margin-bottom:14px;
-}
-
-.field input{
+input{
+display:block;
 width:100%;
 height:48px;
+padding:0 16px;
+margin-bottom:14px;
 border-radius:12px;
 border:1px solid #d2d2d7;
-background:white;
-padding:0 16px;
-font-size:17px;
+font-size:16px;
+background:#fff;
 outline:none;
 }
 
-.field input:focus{
+input:focus{
 border-color:#0071e3;
-box-shadow:0 0 0 3px rgba(0,113,227,.15);
+box-shadow:0 0 0 3px rgba(0,113,227,.12);
 }
 
 button{
 width:100%;
 height:48px;
-border:0;
+border:none;
 border-radius:999px;
 background:#0071e3;
-color:white;
+color:#fff;
 font-size:17px;
 font-weight:600;
 cursor:pointer;
-margin-top:10px;
-}
-
-button:hover{
-background:#0077ed;
 }
 
 footer{
-margin-top:32px;
+margin-top:28px;
 font-size:13px;
 color:#86868b;
 }
 
+@media(min-width:900px){
 
-@media(max-width:600px){
-
-.brand h1{
-font-size:54px;
+h1{
+font-size:72px;
 }
 
-.brand p{
-font-size:18px;
-margin-bottom:36px;
-}
-
-.login-card{
-padding:28px 22px;
-border-radius:24px;
+.login-page{
+padding:40px;
 }
 
 }
