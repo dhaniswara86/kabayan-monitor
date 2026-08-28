@@ -9,18 +9,35 @@
 <body>
 <main class="page">
 <div class="glow"></div>
+
 <section class="login-container">
-<div class="logo-circle"><img src="assets/logo-asd.svg"></div>
+<div class="logo-circle">
+<img src="assets/logo-asd.svg">
+</div>
+
 <h1>Login to Kabayan</h1>
 <p class="subtitle">Masuk untuk melanjutkan ke Kabayan Monitor</p>
-<div class="input-box"><input id="email" placeholder="Email"><span>✉</span></div>
-<div class="input-box"><input id="password" type="password" placeholder="Password"><span>◉</span></div>
+
+<div class="input-box">
+<input id="email" type="email" placeholder="Email">
+<span>✉</span>
+</div>
+
+<div class="input-box">
+<input id="password" type="password" placeholder="Password">
+<span>◉</span>
+</div>
+
 <button onclick="login()">LOGIN</button>
+
 <a class="forgot">Forgot password?</a>
+
 <div id="message"></div>
 </section>
+
 <footer>Kabayan Monitor © 2026</footer>
 </main>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="js/supabase.js"></script>
 <script src="js/auth.js"></script>
