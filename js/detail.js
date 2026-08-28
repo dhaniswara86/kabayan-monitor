@@ -20,7 +20,6 @@ if(error){
 }
 
 
-// Informasi utama
 document.getElementById("nama").innerHTML = berkas.nama_perusahaan;
 document.getElementById("nomor").innerHTML = berkas.nomor_kasus;
 document.getElementById("jenis").innerHTML = berkas.jenis_permohonan || "-";
@@ -30,7 +29,7 @@ document.getElementById("deadline").innerHTML =
 new Date(berkas.jatuh_tempo).toLocaleDateString("id-ID");
 
 
-// Riwayat workflow
+// workflow history
 
 const {data:history,error:historyError}=await supabaseClient
 .from("workflow_history")
@@ -58,9 +57,7 @@ ${index===history.length-1 ? "●":"✓"}
 
 <strong>${item.tahap}</strong>
 
-<p>
-${item.catatan || "Proses berjalan"}
-</p>
+<p>${item.catatan || "Proses berjalan"}</p>
 
 <small>
 ${item.created_at ?
@@ -74,6 +71,66 @@ new Date(item.created_at).toLocaleString("id-ID")
 
 `).join("");
 
+
+// tampilkan aksi sesuai role
+
+const user = JSON.parse(localStorage.getItem("user"));
+
+const actionBox = document.getElementById("workflow-action");
+
+if(user && actionBox){
+
+let html="";
+
+switch(user.role){
+
+case "admin":
+html=`
+<h3>Update Workflow</h3>
+<select id="tahap">
+<option>Pelaksana</option>
+<option>Disposisi Kasi Pelayanan</option>
+<option>Penyuluh Pajak</option>
+<option>Approval Kepala Seksi</option>
+<option>Approval Kepala Kantor</option>
+<option>Arsip</option>
+</select>
+<textarea id="catatan" placeholder="Catatan"></textarea>
+<button onclick="updateWorkflow('${id}')">Simpan</button>
+`;
+break;
+
+
+case "pelaksana":
+html=`<button onclick="updateWorkflow('${id}')">Selesaikan Pemeriksaan Awal</button>`;
+break;
+
+
+case "kasi_pelayanan":
+html=`<button onclick="updateWorkflow('${id}')">Disposisikan ke Penyuluh</button>`;
+break;
+
+
+case "penyuluh":
+html=`<button onclick="updateWorkflow('${id}')">Selesaikan Penelitian</button>`;
+break;
+
+
+case "kasi":
+html=`<button onclick="updateWorkflow('${id}')">Approve Kepala Seksi</button>`;
+break;
+
+
+case "kepala_kantor":
+html=`<button onclick="updateWorkflow('${id}')">Approve Final</button>`;
+break;
+
+}
+
+
+actionBox.innerHTML=html;
+
+}
 
 }
 
