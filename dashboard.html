@@ -4,8 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Kabayan Monitor</title>
-
-<link rel="stylesheet" href="css/theme.css">
 <link rel="stylesheet" href="css/dashboard.css">
 </head>
 
@@ -13,90 +11,88 @@
 
 <div class="app">
 
-<header class="topbar">
-<div>
-<div class="small-title">KABAYAN</div>
-<h1>Monitor</h1>
-</div>
-
-<div class="user">
-<span class="avatar">A</span>
-<div>
-<strong id="user-name">Administrator</strong>
-<small>Admin</small>
-</div>
-</div>
+<header>
+    <button class="icon-btn">←</button>
+    <img src="assets/logo-asd.svg" class="mini-logo">
+    <button class="icon-btn">⚙</button>
 </header>
 
-
-<main>
-
-<section class="welcome">
-<h2>Selamat Datang</h2>
-<p>Pantau workflow berkas secara sederhana dan terstruktur.</p>
+<section class="title">
+    <h1>Kabayan Monitor</h1>
+    <p>Workflow Overview</p>
 </section>
 
 
-<section class="stats">
+<section class="chart-card">
 
-<div class="stat-card">
-<span>Berkas Aktif</span>
-<strong id="active-count">24</strong>
-</div>
-
-<div class="stat-card">
-<span>Menunggu</span>
-<strong id="waiting-count">8</strong>
-</div>
-
-<div class="stat-card">
-<span>Selesai</span>
-<strong id="done-count">16</strong>
+<div class="donut">
+    <div class="donut-center">
+        <strong id="progress">78%</strong>
+        <span>Berkas Selesai</span>
+    </div>
 </div>
 
 </section>
 
 
-<section class="section">
+<section class="summary">
+    <strong>124 berkas</strong>
+    <span>Bulan ini</span>
+</section>
 
-<div class="section-title">
-<h2>Aktivitas Terbaru</h2>
-<a>Lihat Semua</a>
+
+<section class="workflow">
+
+<div class="row">
+    <div class="circle purple">👤</div>
+    <div class="info">
+        <div class="name">Pelaksana</div>
+        <div class="bar"><span style="width:75%"></span></div>
+    </div>
+    <strong>32</strong>
 </div>
 
 
-<div class="activity">
-
-<div class="item">
-<div class="icon">✓</div>
-<div>
-<strong>Permohonan Dokumen</strong>
-<p>Approval Kepala Seksi</p>
-</div>
-</div>
-
-
-<div class="item">
-<div class="icon">◷</div>
-<div>
-<strong>Berkas Pemeriksaan</strong>
-<p>Menunggu proses berikutnya</p>
-</div>
+<div class="row">
+    <div class="circle blue">📄</div>
+    <div class="info">
+        <div class="name">Penyuluh Pajak</div>
+        <div class="bar"><span style="width:60%"></span></div>
+    </div>
+    <strong>24</strong>
 </div>
 
+
+<div class="row">
+    <div class="circle cyan">✓</div>
+    <div class="info">
+        <div class="name">Approval Kasi</div>
+        <div class="bar"><span style="width:45%"></span></div>
+    </div>
+    <strong>18</strong>
+</div>
+
+
+<div class="row">
+    <div class="circle violet">★</div>
+    <div class="info">
+        <div class="name">Approval Kakan</div>
+        <div class="bar"><span style="width:35%"></span></div>
+    </div>
+    <strong>12</strong>
+</div>
+
+
+<div class="row">
+    <div class="circle teal">▣</div>
+    <div class="info">
+        <div class="name">Arsip</div>
+        <div class="bar"><span style="width:80%"></span></div>
+    </div>
+    <strong>38</strong>
 </div>
 
 </section>
-
-</main>
-
-
-<nav class="bottom-nav">
-<a class="active">⌂<span>Home</span></a>
-<a>▣<span>Berkas</span></a>
-<a>◷<span>Workflow</span></a>
-<a>◉<span>Profil</span></a>
-</nav>
 
 
 </div>
