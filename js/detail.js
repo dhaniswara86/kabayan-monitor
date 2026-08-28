@@ -68,7 +68,8 @@ async function loadDetail(){
 
     }
 
-
+console.log("JUMLAH HISTORY:", history.length);
+console.log(history);
 
     document.querySelector(".app").innerHTML = `
 
