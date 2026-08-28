@@ -2,76 +2,58 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
 <title>Detail Berkas - Kabayan Monitor</title>
-
-<link rel="stylesheet" href="css/global.css">
 <link rel="stylesheet" href="css/detail.css">
-
 </head>
-
 <body>
 
 <div class="app">
 
-<header class="header">
-<p class="brand">Kabayan Monitor</p>
+<header>
+<button class="back">←</button>
 <h1>Detail Berkas</h1>
 </header>
 
+<section class="hero">
+<h2 id="company">Memuat...</h2>
+<p id="case"></p>
+
+<div class="status" id="status">-</div>
+
+<div class="progress-card">
+<div class="circle">
+<strong id="progress">0%</strong>
+</div>
+<span>Progress Berkas</span>
+</div>
+</section>
+
 
 <section class="card">
+<h3>Informasi Berkas</h3>
 
-<h2 id="nama"></h2>
-
-<p>Nomor Kasus:
-<strong id="nomor"></strong>
-</p>
-
-<p>Jenis Permohonan:
-<strong id="jenis"></strong>
-</p>
-
-<p>Posisi Saat Ini:
-<strong id="posisi"></strong>
-</p>
-
-<p>
-<strong id="progress"></strong>
-</p>
-
-<p>Deadline:
-<strong id="deadline"></strong>
-</p>
+<div class="row"><span>Jenis Permohonan</span><b id="jenis">-</b></div>
+<div class="row"><span>Posisi Saat Ini</span><b id="posisi">-</b></div>
+<div class="row"><span>Jatuh Tempo</span><b id="tempo">-</b></div>
 
 </section>
 
 
 <section class="card">
-
-<h2>Riwayat Penyelesaian</h2>
-
-<div id="history"></div>
-
+<h3>Timeline Workflow</h3>
+<div id="timeline"></div>
 </section>
 
 
 <section class="card">
-
-<div id="workflow-action"></div>
-
+<h3>Aktivitas Terakhir</h3>
+<div id="activity">-</div>
 </section>
-
 
 </div>
 
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="js/supabase.js"></script>
-<script src="js/auth-check.js"></script>
-<script src="js/workflow-action.js"></script>
-<script src="js/role-action.js"></script>
 <script src="js/detail.js"></script>
 
 </body>
