@@ -15,8 +15,9 @@ const {data,error}=
 await supabaseClient.auth
 .signInWithPassword({
 
-email,
-password
+email: email,
+
+password: password
 
 });
 
@@ -34,20 +35,19 @@ return;
 
 
 
-const user=data.user;
+const user = data.user;
 
 
 
-const {data:profile,error:profileError}
+const {data:profile,error:profileError}=
 
-=
 await supabaseClient
 
 .from("profiles")
 
 .select("*")
 
-.eq("id",user.id)
+.eq("id", user.id)
 
 .single();
 
@@ -57,9 +57,9 @@ if(profileError){
 
 console.error(profileError);
 
-alert(
-"Profile pengguna belum dibuat"
-);
+document.getElementById("message")
+.innerHTML =
+"Profile pengguna belum dibuat";
 
 return;
 
