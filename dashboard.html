@@ -2,67 +2,47 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Kabayan Monitor</title>
 <link rel="stylesheet" href="css/dashboard.css">
 </head>
-
 <body>
 <div class="app">
 
 <header>
-<button class="circle">←</button>
-<div class="brand">KABAYAN</div>
-<button class="circle">⚙</button>
+<button>←</button>
+<h1>Kabayan Monitor</h1>
+<button>⚙</button>
 </header>
 
-<section class="hero">
-<h1>Kabayan Monitor</h1>
-<p id="welcome">Workflow Overview</p>
+<section class="card progress-card" onclick="openProgress()">
+<div class="donut"><span id="progress">0%</span></div>
+<h2>Berkas Selesai</h2>
+<p id="total">0 Berkas</p>
 </section>
 
-<section class="filter">
-<button class="active">Bulan Ini</button>
-<button>Hari Ini</button>
-<button>Tahun Ini</button>
-</section>
-
-<section class="chart-card">
-<div class="donut">
-<div class="inside">
-<strong id="progress">0%</strong>
-<span>Selesai</span>
-</div>
-</div>
-<div class="total">
-<strong id="total">0</strong>
-<span>Total Berkas</span>
-</div>
-</section>
-
-<section class="warning" id="deadline">
-⚠ Mengecek jatuh tempo...
-</section>
-
-<section class="section">
+<section>
 <h2>Workflow</h2>
 <div id="workflow"></div>
 </section>
 
-<section class="section">
+<section class="alert" onclick="openDeadline()">
+⚠ <span id="deadline">Memeriksa deadline...</span>
+</section>
+
+<section>
 <h2>Aktivitas Terbaru</h2>
 <div id="activity"></div>
 </section>
 
 <nav>
-<div class="active">⌂<small>Home</small></div>
-<div>▣<small>Berkas</small></div>
-<div>◷<small>Workflow</small></div>
-<div>◉<small>Profil</small></div>
+<span>⌂<small>Home</small></span>
+<span>▣<small>Berkas</small></span>
+<span>◷<small>Workflow</small></span>
+<span>◉<small>Profil</small></span>
 </nav>
 
 </div>
-
 <script src="js/supabase.js"></script>
 <script src="js/dashboard.js"></script>
 </body>
