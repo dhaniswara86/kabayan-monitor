@@ -2,32 +2,49 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
 <title>Kabayan Monitor - Berkas</title>
-<link rel="stylesheet" href="css/global.css">
 <link rel="stylesheet" href="css/berkas.css">
 </head>
+
 <body>
+
 <div class="app">
-<header class="header">
-<p class="brand">Kabayan Monitor</p>
+
+<header>
+<button class="back">←</button>
+<div>
 <h1>Berkas</h1>
-<p class="subtitle">Daftar berkas aktif dalam penyelesaian</p>
+<p id="total">Memuat data...</p>
+</div>
 </header>
-<div class="search">🔍 &nbsp; Cari berkas atau nomor kasus</div>
-<div class="filter">
-<button class="active">Semua</button>
-<button>Pelaksana</button>
-<button>Disposisi Kasi</button>
-<button>Penyuluh</button>
-<button>Approval Kasi</button>
-<button>Approval Kepala Kantor</button>
-<button>Arsip</button>
+
+
+<div class="search">
+<input id="search" placeholder="Cari nomor kasus / perusahaan">
 </div>
-<div id="listBerkas"></div>
+
+
+<div class="filters" id="filters">
+<button class="active" data-filter="all">Semua</button>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<section id="list"></section>
+
+
+<nav>
+<div class="active">⌂<small>Home</small></div>
+<div>▣<small>Berkas</small></div>
+<div>◷<small>Workflow</small></div>
+<div>◉<small>Profil</small></div>
+</nav>
+
+</div>
+
+
 <script src="js/supabase.js"></script>
 <script src="js/berkas.js"></script>
+
 </body>
 </html>
