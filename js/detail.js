@@ -8,11 +8,13 @@ function formatTanggal(tanggal){
     if(!tanggal) return "-";
 
     return new Date(tanggal)
-    .toLocaleDateString("id-ID",
+    .toLocaleString("id-ID",
     {
         day:"numeric",
         month:"long",
-        year:"numeric"
+        year:"numeric",
+        hour:"2-digit",
+        minute:"2-digit"
     });
 
 }
@@ -56,7 +58,9 @@ async function loadDetail(){
 
     .eq("berkas_id",id)
 
-    .order("created_at");
+    .order("created_at", {
+        ascending:true
+    });
 
 
 
@@ -68,8 +72,11 @@ async function loadDetail(){
 
     }
 
-console.log("JUMLAH HISTORY:", history.length);
-console.log(history);
+
+    console.log("JUMLAH HISTORY:", history.length);
+    console.log(history);
+
+
 
     document.querySelector(".app").innerHTML = `
 
@@ -81,7 +88,7 @@ console.log(history);
 
 
     <h1>
-    ${berkas.nama_perusahaan}
+        ${berkas.nama_perusahaan}
     </h1>
 
 
@@ -130,8 +137,11 @@ console.log(history);
 
     <p>
     Deadline:
-    <b>${formatTanggal(berkas.jatuh_tempo)}</b>
+    <b>
+    ${formatTanggal(berkas.jatuh_tempo)}
+    </b>
     </p>
+
 
 
 
@@ -143,15 +153,12 @@ console.log(history);
     </h2>
 
 
-
     ${
-        history.map((item,index)=>{
+    history.map((item,index)=>{
 
 
         let icon="○";
 
-
-        // otomatis berdasarkan urutan jika status kosong
 
         if(index < history.length-1){
 
@@ -165,7 +172,6 @@ console.log(history);
         }
 
 
-
         return `
 
 
@@ -173,8 +179,11 @@ console.log(history);
 
 
             <div class="circle">
+
                 ${icon}
+
             </div>
+
 
 
             <div>
@@ -182,6 +191,11 @@ console.log(history);
                 <b>
                 ${item.tahap}
                 </b>
+
+
+                <small>
+                ${item.aksi ?? ""}
+                </small>
 
 
                 <small>
@@ -203,8 +217,9 @@ console.log(history);
         `;
 
 
-        }).join("")
+    }).join("")
     }
+
 
 
     </div>
