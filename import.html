@@ -3,33 +3,60 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Import Data Kabayan</title>
+<title>Kabayan Import Enterprise</title>
 <link rel="stylesheet" href="css/import.css">
 </head>
 <body>
+
 <div class="app">
+
 <header>
-<h1>Import Data</h1>
-<p>Excel → Kabayan Monitor</p>
+<h1>Import Excel</h1>
+<p>Kabayan Monitor Enterprise</p>
 </header>
 
-<div class="card">
-<h2>Upload Excel</h2>
+<section class="card">
+<h2>Upload File</h2>
 <input id="file" type="file" accept=".xlsx,.xls">
-<button onclick="previewExcel()">Preview Data</button>
+<button onclick="validateExcel()">Validasi</button>
+</section>
+
+<section class="card hidden" id="result">
+<h2>Hasil Validasi</h2>
+
+<div class="summary">
+<div>Valid <b id="valid">0</b></div>
+<div>Error <b id="error">0</b></div>
+<div>Duplikat <b id="duplicate">0</b></div>
 </div>
 
-<div class="card hidden" id="previewBox">
-<h2>Preview Data</h2>
-<div id="preview"></div>
-<button onclick="importData()">Import ke Kabayan</button>
-</div>
+<div id="error-list"></div>
 
-<div id="message"></div>
+<button onclick="importData()">Import Data</button>
+</section>
+
+<section class="card">
+<h2>Mode Import</h2>
+
+<label>
+<input type="radio" name="mode" value="insert" checked>
+ Tambah Data Baru
+</label>
+
+<br>
+
+<label>
+<input type="radio" name="mode" value="update">
+ Update Data Lama
+</label>
+
+</section>
+
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
 <script src="js/supabase.js"></script>
 <script src="js/import.js"></script>
+
 </body>
 </html>
