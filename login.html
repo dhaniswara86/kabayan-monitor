@@ -1,70 +1,45 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Kabayan Monitor</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Masuk — Kabayan Monitor</title>
 <link rel="stylesheet" href="css/login.css">
 </head>
-
 <body>
+<main class="login">
 
-<div class="page">
+<section class="brand">
+<span class="small">SISTEM MONITORING DIGITAL</span>
+<h1>Kabayan<br><em>Monitor</em></h1>
+<p>Kelola workflow berkas, pantau progres, dan lihat histori aktivitas dalam satu sistem.</p>
+<div class="features">
+<div><b>✓</b><span><strong>Workflow Terintegrasi</strong><small>Alur pekerjaan tercatat.</small></span></div>
+<div><b>✓</b><span><strong>Monitoring Real Time</strong><small>Progres mudah dipantau.</small></span></div>
+<div><b>✓</b><span><strong>Audit Trail</strong><small>Aktivitas tersimpan otomatis.</small></span></div>
+</div>
+</section>
 
-<div class="glow"></div>
-
-<header class="hero">
-
-<div class="logo">
-KABAYAN
+<section class="form">
+<div class="welcome">
+<span>Selamat datang.</span>
+<h2>Masuk ke Kabayan Monitor</h2>
+<p>Gunakan akun Anda untuk melanjutkan.</p>
 </div>
 
-<h1>
-Monitor
-</h1>
+<label>Email</label>
+<div class="input"><input id="email" type="email" placeholder="nama@email.com"></div>
 
-<p>
-Kelola workflow berkas digital
-dengan lebih cepat, sederhana,
-dan terstruktur.
-</p>
+<label>Password</label>
+<div class="input"><input id="password" type="password" placeholder="Masukkan password"></div>
 
-</header>
-
-
-<section class="signin">
-
-<h2>
-Masuk
-</h2>
-
-<p>
-Akses Kabayan Monitor
-</p>
-
-<input id="email" type="email" placeholder="Email">
-
-<input id="password" type="password" placeholder="Password">
-
-<button onclick="login()">
-Masuk
-</button>
-
+<button onclick="login()">Masuk</button>
 <div id="message"></div>
 
 </section>
+</main>
 
-
-<footer>
-© 2026 Kabayan Monitor
-</footer>
-
-</div>
-
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="js/supabase.js"></script>
 <script src="js/auth.js"></script>
-
 </body>
 </html>
