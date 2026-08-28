@@ -3,48 +3,46 @@ const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 
 
-const workflow = [
-    "Pelaksana",
-    "Disposisi Kasi Pelayanan",
-    "Penyuluh Pajak",
-    "Approval Kepala Seksi",
-    "Approval Kepala Kantor",
-    "Arsip"
-];
-
 
 function formatTanggal(tanggal){
 
     if(!tanggal) return "-";
 
-    const d = new Date(tanggal);
+    return new Date(tanggal)
+    .toLocaleDateString("id-ID",
+    {
+        day:"numeric",
+        month:"long",
+        year:"numeric"
+    });
 
-    return d.toLocaleDateString(
-        "id-ID",
-        {
-            day:"numeric",
-            month:"long",
-            year:"numeric"
-        }
-    );
 }
+
 
 
 
 async function loadDetail(){
 
 
-    const {data,error}=await supabaseClient
-        .from("berkas")
-        .select("*")
-        .eq("id",id)
-        .single();
+    // ambil data utama
+
+    const {data:berkas,error:errorBerkas}=
+
+    await supabaseClient
+
+    .from("berkas")
+
+    .select("*")
+
+    .eq("id",id)
+
+    .single();
 
 
 
-    if(error){
+    if(errorBerkas){
 
-        console.error(error);
+        console.error(errorBerkas);
 
         return;
 
@@ -52,8 +50,32 @@ async function loadDetail(){
 
 
 
-    const posisiAktif =
-        workflow.indexOf(data.posisi);
+
+
+    // ambil histori workflow
+
+    const {data:history,error:errorHistory}=
+
+    await supabaseClient
+
+    .from("workflow_history")
+
+    .select("*")
+
+    .eq("berkas_id",id)
+
+    .order("created_at");
+
+
+
+    if(errorHistory){
+
+        console.error(errorHistory);
+
+        return;
+
+    }
+
 
 
 
@@ -66,22 +88,23 @@ async function loadDetail(){
 
 
 
-    <h1>${data.nama_perusahaan}</h1>
+    <h1>
+    ${berkas.nama_perusahaan}
+    </h1>
 
 
 
     <p>
     Nomor Kasus:
-    <b>${data.nomor_kasus}</b>
+    <b>${berkas.nomor_kasus}</b>
     </p>
 
 
 
     <p>
     Jenis Permohonan:
-    <b>${data.jenis_permohonan}</b>
+    <b>${berkas.jenis_permohonan}</b>
     </p>
-
 
 
 
@@ -90,7 +113,7 @@ async function loadDetail(){
         <span>Posisi Saat Ini</span>
 
         <strong>
-        🔵 ${data.posisi}
+        🔵 ${berkas.posisi}
         </strong>
 
     </div>
@@ -99,10 +122,8 @@ async function loadDetail(){
 
     <div class="progress">
 
-        <div 
-        style="
-        width:${data.progress}%
-        ">
+        <div style="width:${berkas.progress}%">
+
         </div>
 
     </div>
@@ -110,80 +131,67 @@ async function loadDetail(){
 
 
     <h3>
-    ${data.progress}% selesai
+    ${berkas.progress}% selesai
     </h3>
 
 
 
     <p>
     Deadline:
-    <b>
-    ${formatTanggal(data.jatuh_tempo)}
-    </b>
+    <b>${formatTanggal(berkas.jatuh_tempo)}</b>
     </p>
-
 
 
 
     <div class="workflow">
 
-
     <h2>
-    Alur Penyelesaian
+    Riwayat Penyelesaian
     </h2>
 
 
     ${
-    workflow.map((item,index)=>{
+        history.map(item=>{
 
 
-        let status="";
+        let icon="○";
 
 
-        if(index < posisiAktif){
+        if(item.status==="selesai")
+            icon="✓";
 
-            status="done";
 
-        }
+        if(item.status==="proses")
+            icon="●";
 
-        else if(index===posisiAktif){
-
-            status="active";
-
-        }
 
 
         return `
 
-        <div class="step ${status}">
+        <div class="step">
 
-        ${index<=posisiAktif?"●":"○"}
+        ${icon}
+        ${item.tahap}
 
-        ${item}
+        <small>
+        ${item.catatan ?? ""}
+        </small>
 
         </div>
 
-        ${
-        index < workflow.length-1
-        ?
-        '<div class="line"></div>'
-        :
-        ''
-        }
 
         `;
 
 
-    }).join("")
+        }).join("")
     }
-
 
 
     </div>
 
 
-
     `;
+
 
 
 }
