@@ -3,7 +3,6 @@ const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 
 
-
 function formatTanggal(tanggal){
 
     if(!tanggal) return "-";
@@ -20,11 +19,8 @@ function formatTanggal(tanggal){
 
 
 
-
 async function loadDetail(){
 
-
-    // ambil data utama
 
     const {data:berkas,error:errorBerkas}=
 
@@ -50,10 +46,6 @@ async function loadDetail(){
 
 
 
-
-
-    // ambil histori workflow
-
     const {data:history,error:errorHistory}=
 
     await supabaseClient
@@ -75,7 +67,6 @@ async function loadDetail(){
         return;
 
     }
-
 
 
 
@@ -145,37 +136,65 @@ async function loadDetail(){
 
     <div class="workflow">
 
+
     <h2>
     Riwayat Penyelesaian
     </h2>
 
 
+
     ${
-        history.map(item=>{
+        history.map((item,index)=>{
 
 
         let icon="○";
 
 
-        if(item.status==="selesai")
+        // otomatis berdasarkan urutan jika status kosong
+
+        if(index < history.length-1){
+
             icon="✓";
 
+        }
+        else{
 
-        if(item.status==="proses")
             icon="●";
+
+        }
 
 
 
         return `
 
+
         <div class="step">
 
-        ${icon}
-        ${item.tahap}
 
-        <small>
-        ${item.catatan ?? ""}
-        </small>
+            <div class="circle">
+                ${icon}
+            </div>
+
+
+            <div>
+
+                <b>
+                ${item.tahap}
+                </b>
+
+
+                <small>
+                ${item.catatan ?? "Menunggu proses"}
+                </small>
+
+
+                <small>
+                ${formatTanggal(item.created_at)}
+                </small>
+
+
+            </div>
+
 
         </div>
 
