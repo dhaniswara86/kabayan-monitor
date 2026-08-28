@@ -1,53 +1,81 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>
-Login Kabayan Monitor
-</title>
-
+<title>Login Kabayan Monitor</title>
 
 <link rel="stylesheet" href="css/login.css">
 
 </head>
 
-
 <body>
 
+<div class="login-page">
 
-<div class="login-container">
+<div class="brand-panel">
+
+<div class="brand-logo">
+KABAYAN
+</div>
+
+<h1>
+Monitor
+</h1>
+
+<p>
+Sistem pengendalian penyelesaian berkas dan workflow digital.
+</p>
+
+<div class="feature">
+
+<div>
+✓ Monitoring proses
+</div>
+
+<div>
+✓ Workflow terintegrasi
+</div>
+
+<div>
+✓ Audit aktivitas
+</div>
+
+</div>
+
+</div>
 
 
 <div class="login-card">
 
+<div class="login-header">
 
-<h1>
-Kabayan Monitor
-</h1>
-
+<h2>
+Selamat Datang
+</h2>
 
 <p>
-Masuk untuk mengelola workflow berkas
+Masuk untuk melanjutkan ke Kabayan Monitor
 </p>
 
+</div>
 
 
-<input 
+<label>Email</label>
+
+<input
 id="email"
 type="email"
-placeholder="Email">
+placeholder="nama@email.com">
 
 
-<input 
+<label>Password</label>
+
+<input
 id="password"
 type="password"
-placeholder="Password">
-
+placeholder="Masukkan password">
 
 
 <button onclick="login()">
@@ -55,25 +83,17 @@ Masuk
 </button>
 
 
-
 <div id="message"></div>
 
 
 </div>
 
-
 </div>
 
 
-
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <script src="js/supabase.js"></script>
-
 <script src="js/auth.js"></script>
 
-
 </body>
-
 </html>
