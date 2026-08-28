@@ -1,133 +1,53 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-
-<title>
-Kabayan Monitor Dashboard
-</title>
-
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Kabayan Monitor Dashboard</title>
 <link rel="stylesheet" href="css/global.css">
-
 <link rel="stylesheet" href="css/dashboard.css">
-
-
 </head>
-
-
 <body>
-
 
 <div class="app">
 
-
 <header class="header">
-
-<p class="brand">
-Kabayan Monitor
-</p>
-
-
-<h1>
-Dashboard
-</h1>
-
-
-<p class="subtitle">
-Monitoring penyelesaian berkas
-</p>
-
-
+<p class="brand">Kabayan Monitor</p>
+<h1>Dashboard</h1>
+<p class="subtitle">Monitoring penyelesaian berkas</p>
 </header>
-
-
 
 <div class="summary">
 
+<div class="box">
+<span>Total Berkas</span>
+<strong id="total">0</strong>
+</div>
 
 <div class="box">
-
-<span>
-Total Berkas
-</span>
-
-<strong id="total">
-0
-</strong>
-
+<span>Selesai</span>
+<strong id="selesai">0</strong>
 </div>
-
-
 
 <div class="box">
-
-<span>
-Selesai
-</span>
-
-<strong id="selesai">
-0
-</strong>
+<span>Dalam Proses</span>
+<strong id="proses">0</strong>
+</div>
 
 </div>
 
-
-
-<div class="box">
-
-<span>
-Dalam Proses
-</span>
-
-<strong id="proses">
-0
-</strong>
-
-</div>
-
-
-</div>
-
-
-
-
-<h2>
-Posisi Berkas
-</h2>
-
-
+<h2>Posisi Berkas</h2>
 <div id="posisi"></div>
 
-
-
-<h2>
-Deadline
-</h2>
-
-
+<h2>Deadline</h2>
 <div id="deadline"></div>
-
-
 
 </div>
 
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <script src="js/supabase.js"></script>
-
 <script src="js/auth-check.js"></script>
-
 <script src="js/dashboard.js"></script>
 
-
 </body>
-
 </html>
