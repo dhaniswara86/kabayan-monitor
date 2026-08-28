@@ -3,8 +3,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Kabayan Monitor - Dashboard Pimpinan</title>
+<title>Kabayan Monitor - Dashboard Pimpinan V2</title>
 <link rel="stylesheet" href="css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -12,7 +13,8 @@
 <main class="container">
 
 <h1>Dashboard Pimpinan</h1>
-<p>Monitoring progres penyelesaian berkas</p>
+<p>Monitoring kinerja penyelesaian berkas</p>
+
 
 <section class="summary">
 
@@ -27,7 +29,7 @@
 </div>
 
 <div class="card">
-<h3>Dalam Proses</h3>
+<h3>Proses</h3>
 <strong id="proses">0</strong>
 </div>
 
@@ -39,14 +41,21 @@
 </section>
 
 
-<h2>Distribusi Tahapan</h2>
+<section class="grid">
 
-<div id="tahapan"></div>
+<div class="card">
+<h2>Beban Tahapan</h2>
+<canvas id="chartTahap"></canvas>
+</div>
 
 
-<h2>Antrean Per Posisi</h2>
+<div class="card">
+<h2>Status Berkas</h2>
+<canvas id="chartStatus"></canvas>
+</div>
 
-<div id="posisi"></div>
+</section>
+
 
 
 <h2>Berkas Prioritas</h2>
@@ -54,11 +63,16 @@
 <div id="prioritas"></div>
 
 
+<h2>Monitoring Per Posisi</h2>
+
+<div id="posisi"></div>
+
+
 </main>
 
 
 <script src="js/supabase.js"></script>
-<script src="js/pimpinan-dashboard.js"></script>
+<script src="js/pimpinan-dashboard-v2.js"></script>
 
 </body>
 </html>
