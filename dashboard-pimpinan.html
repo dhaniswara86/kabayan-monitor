@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Kabayan Monitor - Dashboard Pimpinan</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<main class="container">
+
+<h1>Dashboard Pimpinan</h1>
+<p>Monitoring progres penyelesaian berkas</p>
+
+<section class="summary">
+
+<div class="card">
+<h3>Total Berkas</h3>
+<strong id="total">0</strong>
+</div>
+
+<div class="card">
+<h3>Selesai</h3>
+<strong id="selesai">0</strong>
+</div>
+
+<div class="card">
+<h3>Dalam Proses</h3>
+<strong id="proses">0</strong>
+</div>
+
+<div class="card">
+<h3>Terlambat</h3>
+<strong id="terlambat">0</strong>
+</div>
+
+</section>
+
+
+<h2>Distribusi Tahapan</h2>
+
+<div id="tahapan"></div>
+
+
+<h2>Antrean Per Posisi</h2>
+
+<div id="posisi"></div>
+
+
+<h2>Berkas Prioritas</h2>
+
+<div id="prioritas"></div>
+
+
+</main>
+
+
+<script src="js/supabase.js"></script>
+<script src="js/pimpinan-dashboard.js"></script>
+
+</body>
+</html>
