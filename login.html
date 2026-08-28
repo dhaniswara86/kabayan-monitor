@@ -3,73 +3,42 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-
 <title>Kabayan Monitor</title>
-
 <link rel="stylesheet" href="css/login.css">
-
 </head>
 
 <body>
 
-<div class="login-page">
+<main class="page">
 
-<div class="background-shape shape-1"></div>
-<div class="background-shape shape-2"></div>
-<div class="background-shape shape-3"></div>
+<div class="ambient"></div>
 
-
-<section class="intro">
+<section class="content">
 
 <div class="brand">
-KABAYAN
-</div>
-
-<h1>
-Monitor
-</h1>
-
+<div class="logo">KABAYAN</div>
+<h1>Monitor</h1>
 <p>
-Sistem monitoring workflow
-berkas digital.
+Kelola workflow berkas dengan lebih sederhana.
 </p>
-
-</section>
-
-
-
-<section class="login-card">
-
-<h2>
-Selamat Datang
-</h2>
-
-<p>
-Masuk untuk melanjutkan
-</p>
-
-
-<div class="input-group">
-
-<label>Email</label>
-
-<input 
-id="email"
-type="email"
-placeholder="Email Anda">
-
 </div>
 
 
-<div class="input-group">
+<div class="login-card">
 
-<label>Password</label>
+<h2>Masuk</h2>
+<p class="subtitle">
+Gunakan akun Anda untuk melanjutkan.
+</p>
 
-<input
-id="password"
-type="password"
-placeholder="Password">
 
+<div class="field">
+<input id="email" type="email" placeholder="Email">
+</div>
+
+
+<div class="field">
+<input id="password" type="password" placeholder="Password">
 </div>
 
 
@@ -80,10 +49,17 @@ Masuk
 
 <div id="message"></div>
 
+</div>
+
+
+<footer>
+© 2026 Kabayan Monitor
+</footer>
+
 
 </section>
 
-</div>
+</main>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
