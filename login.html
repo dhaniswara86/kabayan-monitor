@@ -1,45 +1,72 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Masuk — Kabayan Monitor</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kabayan Monitor</title>
 <link rel="stylesheet" href="css/login.css">
 </head>
+
 <body>
-<main class="login">
 
-<section class="brand">
-<span class="small">SISTEM MONITORING DIGITAL</span>
-<h1>Kabayan<br><em>Monitor</em></h1>
-<p>Kelola workflow berkas, pantau progres, dan lihat histori aktivitas dalam satu sistem.</p>
-<div class="features">
-<div><b>✓</b><span><strong>Workflow Terintegrasi</strong><small>Alur pekerjaan tercatat.</small></span></div>
-<div><b>✓</b><span><strong>Monitoring Real Time</strong><small>Progres mudah dipantau.</small></span></div>
-<div><b>✓</b><span><strong>Audit Trail</strong><small>Aktivitas tersimpan otomatis.</small></span></div>
+<header class="topbar">
+    <div class="brand">Kabayan Monitor</div>
+    <nav>
+        <a>Masuk</a>
+        <a>Buat Akun</a>
+        <a>Bantuan</a>
+    </nav>
+</header>
+
+
+<main class="container">
+
+<img class="logo" src="assets/logo-asd.svg" alt="Logo">
+
+
+<h1>Kabayan Monitor</h1>
+
+<p class="subtitle">
+Kelola workflow berkas secara aman dan terintegrasi.
+</p>
+
+
+<div class="form-area">
+
+<input id="email" type="email" placeholder="Email">
+
+<input id="password" type="password" placeholder="Password">
+
+
+<div class="info">
+<div class="info-icon">●</div>
+<p>
+Informasi akun Kabayan digunakan untuk memberikan akses
+secara aman sesuai dengan peran pengguna dan aktivitas workflow.
+</p>
 </div>
-</section>
 
-<section class="form">
-<div class="welcome">
-<span>Selamat datang.</span>
-<h2>Masuk ke Kabayan Monitor</h2>
-<p>Gunakan akun Anda untuk melanjutkan.</p>
-</div>
 
-<label>Email</label>
-<div class="input"><input id="email" type="email" placeholder="nama@email.com"></div>
+<button onclick="login()">
+Masuk
+</button>
 
-<label>Password</label>
-<div class="input"><input id="password" type="password" placeholder="Masukkan password"></div>
 
-<button onclick="login()">Masuk</button>
 <div id="message"></div>
 
-</section>
+</div>
+
 </main>
 
+
+<footer>
+© 2026 Kabayan Monitor
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="js/supabase.js"></script>
 <script src="js/auth.js"></script>
+
 </body>
 </html>
