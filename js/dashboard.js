@@ -1,3 +1,4 @@
+
 async function loadDashboard(){
 
 const user = JSON.parse(localStorage.getItem("user"));
@@ -10,10 +11,44 @@ document.getElementById("welcome").innerHTML =
 }
 
 
-const {data,error}=await supabaseClient
+let query = supabaseClient
 .from("berkas")
 .select("*")
 .order("created_at",{ascending:false});
+
+
+// Filter berdasarkan role
+if(user && user.role !== "admin"){
+
+const posisiRole = {
+
+"pelaksana":"Pelaksana",
+
+"kasi_pelayanan":"Disposisi Kasi Pelayanan",
+
+"penyuluh":"Penyuluh Pajak",
+
+"kasi":"Approval Kepala Seksi",
+
+"kepala_kantor":"Approval Kepala Kantor"
+
+};
+
+
+const posisi = posisiRole[user.role];
+
+
+if(posisi){
+
+query = query.eq("posisi", posisi);
+
+}
+
+}
+
+
+
+const {data,error}=await query;
 
 
 if(error){
@@ -22,6 +57,7 @@ console.error(error);
 return;
 
 }
+
 
 
 document.getElementById("total").innerHTML=data.length;
@@ -93,6 +129,8 @@ document.getElementById("deadline").innerHTML=`
 const daftar=document.getElementById("daftar-berkas");
 
 
+if(daftar){
+
 daftar.innerHTML=data.map(item=>`
 
 <div class="berkas-card">
@@ -125,6 +163,7 @@ Lihat Detail →
 
 `).join("");
 
+}
 
 }
 
