@@ -1,192 +1,49 @@
-
 async function loadDetail(){
 
-const params = new URLSearchParams(location.search);
-const id = params.get("id");
+const id=new URLSearchParams(location.search).get('id');
 
-if(!id) return;
-
-
-const {data:berkas,error}=await supabaseClient
-.from("berkas")
-.select("*")
-.eq("id",id)
+const {data:berkas}=await supabase
+.from('berkas')
+.select('*')
+.eq('id',id)
 .single();
 
+if(!berkas)return;
 
-if(error){
- console.error(error);
- return;
-}
-
-
-// ===============================
-// ACCESS CONTROL BERDASARKAN ROLE
-// ===============================
-
-const user = JSON.parse(localStorage.getItem("user"));
+company.innerText=berkas.nama_perusahaan||'-';
+case.innerText=berkas.nomor_kasus||'-';
+status.innerText=berkas.status||'-';
+progress.innerText=(berkas.progress||0)+'%';
+jenis.innerText=berkas.jenis_permohonan||'-';
+posisi.innerText=berkas.posisi||'-';
+tempo.innerText=berkas.jatuh_tempo||'-';
 
 
-const roleMapping = {
-
-    "pelaksana":"Pelaksana",
-
-    "kasi_pelayanan":"Disposisi Kasi Pelayanan",
-
-    "penyuluh":"Penyuluh Pajak",
-
-    "kasi":"Approval Kepala Seksi",
-
-    "kepala_kantor":"Approval Kepala Kantor"
-
-};
+const {data:history=[]}=await supabase
+.from('workflow_history')
+.select('*')
+.eq('berkas_id',id)
+.order('created_at',{ascending:true});
 
 
-
-if(user && user.role !== "admin"){
-
-    const posisiDiizinkan = roleMapping[user.role];
-
-
-    if(posisiDiizinkan !== berkas.posisi){
-
-        document.querySelector(".app").innerHTML = `
-
-        <section class="card">
-
-        <h2>
-        Akses Tidak Diizinkan
-        </h2>
-
-        <p>
-        Berkas ini bukan bagian dari kewenangan Anda.
-        </p>
-
-        </section>
-
-        `;
-
-        return;
-
-    }
-
-}
-
-
-
-document.getElementById("nama").innerHTML = berkas.nama_perusahaan;
-document.getElementById("nomor").innerHTML = berkas.nomor_kasus;
-document.getElementById("jenis").innerHTML = berkas.jenis_permohonan || "-";
-document.getElementById("posisi").innerHTML = berkas.posisi || "-";
-document.getElementById("progress").innerHTML = `${berkas.progress || 0}% selesai`;
-document.getElementById("deadline").innerHTML =
-new Date(berkas.jatuh_tempo).toLocaleDateString("id-ID");
-
-
-// workflow history
-
-const {data:history,error:historyError}=await supabaseClient
-.from("workflow_history")
-.select("*")
-.eq("berkas_id",id)
-.order("created_at",{ascending:true});
-
-
-if(historyError){
- console.error(historyError);
- return;
-}
-
-
-document.getElementById("history").innerHTML =
-history.map((item,index)=>`
-
+timeline.innerHTML=history.map((x,i)=>`
 <div class="timeline-item">
-
-<div class="dot">
-${index===history.length-1 ? "●":"✓"}
+<div class="dot">${i+1}</div>
+<div>
+<b>${x.tahap}</b>
+<p>${x.catatan||''}</p>
 </div>
-
-<div class="content">
-
-<strong>${item.tahap}</strong>
-
-<p>${item.catatan || "Proses berjalan"}</p>
-
-<small>
-${item.created_at ?
-new Date(item.created_at).toLocaleString("id-ID")
-:""}
-</small>
-
-</div>
-
-</div>
-
-`).join("");
+</div>`).join('');
 
 
-// tampilkan aksi sesuai role
-
-const user = JSON.parse(localStorage.getItem("user"));
-
-const actionBox = document.getElementById("workflow-action");
-
-if(user && actionBox){
-
-let html="";
-
-switch(user.role){
-
-case "admin":
-html=`
-<h3>Update Workflow</h3>
-<select id="tahap">
-<option>Pelaksana</option>
-<option>Disposisi Kasi Pelayanan</option>
-<option>Penyuluh Pajak</option>
-<option>Approval Kepala Seksi</option>
-<option>Approval Kepala Kantor</option>
-<option>Arsip</option>
-</select>
-<textarea id="catatan" placeholder="Catatan"></textarea>
-<button onclick="updateWorkflow('${id}')">Simpan</button>
-`;
-break;
-
-
-case "pelaksana":
-html=`<button onclick="updateWorkflow('${id}')">Selesaikan Pemeriksaan Awal</button>`;
-break;
-
-
-case "kasi_pelayanan":
-html=`<button onclick="updateWorkflow('${id}')">Disposisikan ke Penyuluh</button>`;
-break;
-
-
-case "penyuluh":
-html=`<button onclick="updateWorkflow('${id}')">Selesaikan Penelitian</button>`;
-break;
-
-
-case "kasi":
-html=`<button onclick="updateWorkflow('${id}')">Approve Kepala Seksi</button>`;
-break;
-
-
-case "kepala_kantor":
-html=`<button onclick="updateWorkflow('${id}')">Approve Final</button>`;
-break;
-
-}
-
-
-actionBox.innerHTML=html;
-
+if(history.length){
+let last=history[history.length-1];
+activity.innerHTML=`
+<b>${last.tahap}</b><br>
+${last.catatan||''}<br>
+${last.created_at||''}`;
 }
 
 }
-
 
 loadDetail();
