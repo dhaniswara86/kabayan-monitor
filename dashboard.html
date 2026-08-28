@@ -2,103 +2,49 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
 <title>Kabayan Monitor</title>
 <link rel="stylesheet" href="css/dashboard.css">
 </head>
-
 <body>
 
 <div class="app">
-
 <header>
-    <button class="icon-btn">←</button>
-    <img src="assets/logo-asd.svg" class="mini-logo">
-    <button class="icon-btn">⚙</button>
+<button class="circle-btn">←</button>
+<img src="assets/logo-asd.svg" class="logo">
+<button class="circle-btn">⚙</button>
 </header>
 
 <section class="title">
-    <h1>Kabayan Monitor</h1>
-    <p>Workflow Overview</p>
+<h1>Kabayan Monitor</h1>
+<p>Workflow Overview</p>
 </section>
 
-
-<section class="chart-card">
-
+<section class="chart">
 <div class="donut">
-    <div class="donut-center">
-        <strong id="progress">78%</strong>
-        <span>Berkas Selesai</span>
-    </div>
+<div>
+<strong id="progress">0%</strong>
+<span>Berkas Selesai</span>
 </div>
-
+</div>
 </section>
-
 
 <section class="summary">
-    <strong>124 berkas</strong>
-    <span>Bulan ini</span>
+<strong id="total">0 Berkas</strong>
+<span>Bulan ini</span>
 </section>
 
-
-<section class="workflow">
-
-<div class="row">
-    <div class="circle purple">👤</div>
-    <div class="info">
-        <div class="name">Pelaksana</div>
-        <div class="bar"><span style="width:75%"></span></div>
-    </div>
-    <strong>32</strong>
-</div>
-
-
-<div class="row">
-    <div class="circle blue">📄</div>
-    <div class="info">
-        <div class="name">Penyuluh Pajak</div>
-        <div class="bar"><span style="width:60%"></span></div>
-    </div>
-    <strong>24</strong>
-</div>
-
-
-<div class="row">
-    <div class="circle cyan">✓</div>
-    <div class="info">
-        <div class="name">Approval Kasi</div>
-        <div class="bar"><span style="width:45%"></span></div>
-    </div>
-    <strong>18</strong>
-</div>
-
-
-<div class="row">
-    <div class="circle violet">★</div>
-    <div class="info">
-        <div class="name">Approval Kakan</div>
-        <div class="bar"><span style="width:35%"></span></div>
-    </div>
-    <strong>12</strong>
-</div>
-
-
-<div class="row">
-    <div class="circle teal">▣</div>
-    <div class="info">
-        <div class="name">Arsip</div>
-        <div class="bar"><span style="width:80%"></span></div>
-    </div>
-    <strong>38</strong>
-</div>
-
+<section>
+<div id="workflow-list"></div>
 </section>
 
-
+<section class="activity">
+<h2>Aktivitas Terbaru</h2>
+<div id="activity-list"></div>
+</section>
 </div>
 
-
+<script src="js/supabase.js"></script>
 <script src="js/dashboard.js"></script>
-
 </body>
 </html>
