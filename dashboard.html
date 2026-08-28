@@ -2,46 +2,65 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover">
 <title>Kabayan Monitor</title>
 <link rel="stylesheet" href="css/dashboard.css">
 </head>
-<body>
 
+<body>
 <div class="app">
+
 <header>
-<button class="circle-btn">←</button>
-<img src="assets/logo-asd.svg" class="logo">
-<button class="circle-btn">⚙</button>
+<button class="circle">←</button>
+<div class="brand">KABAYAN</div>
+<button class="circle">⚙</button>
 </header>
 
-<section class="title">
+<section class="hero">
 <h1>Kabayan Monitor</h1>
-<p>Workflow Overview</p>
+<p id="welcome">Workflow Overview</p>
 </section>
 
-<section class="chart">
+<section class="filter">
+<button class="active">Bulan Ini</button>
+<button>Hari Ini</button>
+<button>Tahun Ini</button>
+</section>
+
+<section class="chart-card">
 <div class="donut">
-<div>
+<div class="inside">
 <strong id="progress">0%</strong>
-<span>Berkas Selesai</span>
+<span>Selesai</span>
 </div>
 </div>
+<div class="total">
+<strong id="total">0</strong>
+<span>Total Berkas</span>
+</div>
 </section>
 
-<section class="summary">
-<strong id="total">0 Berkas</strong>
-<span>Bulan ini</span>
+<section class="warning" id="deadline">
+⚠ Mengecek jatuh tempo...
 </section>
 
-<section>
-<div id="workflow-list"></div>
+<section class="section">
+<h2>Workflow</h2>
+<div id="workflow"></div>
 </section>
 
-<section class="activity">
+<section class="section">
 <h2>Aktivitas Terbaru</h2>
-<div id="activity-list"></div>
+<div id="activity"></div>
 </section>
+
+<nav>
+<div class="active">⌂<small>Home</small></div>
+<div>▣<small>Berkas</small></div>
+<div>◷<small>Workflow</small></div>
+<div>◉<small>Profil</small></div>
+</nav>
+
 </div>
 
 <script src="js/supabase.js"></script>
