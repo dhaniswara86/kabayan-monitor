@@ -20,6 +20,60 @@ if(error){
 }
 
 
+// ===============================
+// ACCESS CONTROL BERDASARKAN ROLE
+// ===============================
+
+const user = JSON.parse(localStorage.getItem("user"));
+
+
+const roleMapping = {
+
+    "pelaksana":"Pelaksana",
+
+    "kasi_pelayanan":"Disposisi Kasi Pelayanan",
+
+    "penyuluh":"Penyuluh Pajak",
+
+    "kasi":"Approval Kepala Seksi",
+
+    "kepala_kantor":"Approval Kepala Kantor"
+
+};
+
+
+
+if(user && user.role !== "admin"){
+
+    const posisiDiizinkan = roleMapping[user.role];
+
+
+    if(posisiDiizinkan !== berkas.posisi){
+
+        document.querySelector(".app").innerHTML = `
+
+        <section class="card">
+
+        <h2>
+        Akses Tidak Diizinkan
+        </h2>
+
+        <p>
+        Berkas ini bukan bagian dari kewenangan Anda.
+        </p>
+
+        </section>
+
+        `;
+
+        return;
+
+    }
+
+}
+
+
+
 document.getElementById("nama").innerHTML = berkas.nama_perusahaan;
 document.getElementById("nomor").innerHTML = berkas.nomor_kasus;
 document.getElementById("jenis").innerHTML = berkas.jenis_permohonan || "-";
