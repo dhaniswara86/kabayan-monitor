@@ -2,13 +2,11 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Kabayan Monitor</title>
 
-<title>Kabayan Monitor Dashboard</title>
-
-<link rel="stylesheet" href="css/global.css">
+<link rel="stylesheet" href="css/theme.css">
 <link rel="stylesheet" href="css/dashboard.css">
-
 </head>
 
 <body>
@@ -16,91 +14,94 @@
 <div class="app">
 
 <header class="topbar">
-
 <div>
-<p class="brand">Kabayan Monitor</p>
-<h1>Dashboard</h1>
-<p class="subtitle" id="welcome">
-Monitoring penyelesaian berkas
-</p>
+<div class="small-title">KABAYAN</div>
+<h1>Monitor</h1>
 </div>
 
-<button class="profile">
-Admin
-</button>
-
+<div class="user">
+<span class="avatar">A</span>
+<div>
+<strong id="user-name">Administrator</strong>
+<small>Admin</small>
+</div>
+</div>
 </header>
 
 
-<section class="hero-card">
+<main>
 
-<div>
-<span>Ringkasan Hari Ini</span>
-<h2>Kontrol penyelesaian berkas secara real time</h2>
-</div>
-
+<section class="welcome">
+<h2>Selamat Datang</h2>
+<p>Pantau workflow berkas secara sederhana dan terstruktur.</p>
 </section>
 
 
-<section class="summary">
+<section class="stats">
 
-<div class="box">
-<span>Total Berkas</span>
-<strong id="total">0</strong>
+<div class="stat-card">
+<span>Berkas Aktif</span>
+<strong id="active-count">24</strong>
 </div>
 
-<div class="box">
+<div class="stat-card">
+<span>Menunggu</span>
+<strong id="waiting-count">8</strong>
+</div>
+
+<div class="stat-card">
 <span>Selesai</span>
-<strong id="selesai">0</strong>
-</div>
-
-<div class="box">
-<span>Dalam Proses</span>
-<strong id="proses">0</strong>
+<strong id="done-count">16</strong>
 </div>
 
 </section>
 
 
-<section>
+<section class="section">
 
 <div class="section-title">
-<h2>Workflow</h2>
+<h2>Aktivitas Terbaru</h2>
+<a>Lihat Semua</a>
 </div>
 
-<div id="posisi"></div>
+
+<div class="activity">
+
+<div class="item">
+<div class="icon">✓</div>
+<div>
+<strong>Permohonan Dokumen</strong>
+<p>Approval Kepala Seksi</p>
+</div>
+</div>
+
+
+<div class="item">
+<div class="icon">◷</div>
+<div>
+<strong>Berkas Pemeriksaan</strong>
+<p>Menunggu proses berikutnya</p>
+</div>
+</div>
+
+</div>
 
 </section>
 
-
-<section>
-
-<div class="section-title">
-<h2>Perhatian</h2>
-</div>
-
-<div id="deadline"></div>
-
-</section>
+</main>
 
 
-<section>
-
-<div class="section-title">
-<h2>Berkas Terbaru</h2>
-</div>
-
-<div id="daftar-berkas"></div>
-
-</section>
+<nav class="bottom-nav">
+<a class="active">⌂<span>Home</span></a>
+<a>▣<span>Berkas</span></a>
+<a>◷<span>Workflow</span></a>
+<a>◉<span>Profil</span></a>
+</nav>
 
 
 </div>
 
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="js/supabase.js"></script>
-<script src="js/auth-check.js"></script>
 <script src="js/dashboard.js"></script>
 
 </body>
