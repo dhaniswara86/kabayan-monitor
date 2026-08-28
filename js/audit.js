@@ -1,7 +1,7 @@
 
 async function loadAudit(){
 
-const container=document.getElementById("timeline");
+const container = document.getElementById("timeline");
 
 
 const {data,error}=await supabaseClient
@@ -11,6 +11,10 @@ const {data,error}=await supabaseClient
     berkas:berkas_id(
         nama_perusahaan,
         nomor_kasus
+    ),
+    profile:user_id(
+        nama,
+        role
     )
 `)
 .order("created_at",{ascending:false});
@@ -48,9 +52,24 @@ ${item.berkas?.nomor_kasus || "-"}
 </p>
 
 
+<div class="user">
+
+👤
+<strong>
+${item.profile?.nama || "User"}
+</strong>
+
+<br>
+
+Role:
+${item.profile?.role || "-"}
+
+</div>
+
+
 <p>
 Tahap:
-<strong>${item.tahap}</strong>
+<strong>${item.tahap || "-"}</strong>
 </p>
 
 
