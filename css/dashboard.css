@@ -1,187 +1,26 @@
-*{
-box-sizing:border-box;
-}
-
-body{
-margin:0;
-background:#f7f8ff;
-font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
-color:#111827;
-}
-
-.app{
-max-width:430px;
-min-height:100vh;
-margin:auto;
-padding:30px 24px;
-background:white;
-}
-
-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-
-.icon-btn{
-width:42px;
-height:42px;
-border:0;
-border-radius:50%;
-background:#f1efff;
-color:#5b4de8;
-font-size:22px;
-}
-
-.mini-logo{
-width:38px;
-height:38px;
-object-fit:contain;
-}
-
-.title{
-margin-top:35px;
-}
-
-.title h1{
-font-size:36px;
-letter-spacing:-1.5px;
-margin:0;
-}
-
-.title p{
-font-size:18px;
-color:#9ca3af;
-margin-top:5px;
-}
-
-
-.chart-card{
-margin-top:35px;
-display:flex;
-justify-content:center;
-}
-
-
-.donut{
-width:260px;
-height:260px;
-border-radius:50%;
-background:conic-gradient(
-#5548e8 0 60%,
-#54c9dc 60% 75%,
-#c7c5ff 75% 78%,
-#eeeeff 78% 100%
-);
-display:flex;
-align-items:center;
-justify-content:center;
-}
-
-.donut:before{
-content:"";
-position:absolute;
-}
-
-
-.donut-center{
-width:190px;
-height:190px;
-border-radius:50%;
-background:white;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-}
-
-.donut-center strong{
-font-size:54px;
-letter-spacing:-3px;
-}
-
-.donut-center span{
-color:#9ca3af;
-}
-
-
-.summary{
-margin-top:35px;
-}
-
-.summary strong{
-display:block;
-font-size:28px;
-}
-
-.summary span{
-color:#9ca3af;
-}
-
-
-.workflow{
-margin-top:30px;
-}
-
-
-.row{
-display:flex;
-align-items:center;
-gap:14px;
-margin-bottom:22px;
-}
-
-
-.circle{
-width:46px;
-height:46px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-}
-
-
-.purple{background:#eeeaff}
-.blue{background:#e7efff}
-.cyan{background:#dff8ff}
-.violet{background:#f0e8ff}
-.teal{background:#dcffff}
-
-
-.info{
-flex:1;
-}
-
-.name{
-font-size:17px;
-font-weight:600;
-margin-bottom:8px;
-}
-
-.bar{
-height:7px;
-background:#f0f1fa;
-border-radius:10px;
-overflow:hidden;
-}
-
-.bar span{
-height:100%;
-display:block;
-background:linear-gradient(90deg,#6557ed,#54c9dc);
-border-radius:10px;
-}
-
-.row strong{
-font-size:18px;
-}
-
-
-@media(min-width:700px){
-.app{
-border-radius:40px;
-margin-top:30px;
-box-shadow:0 20px 60px rgba(0,0,0,.08);
-}
-}
+*{box-sizing:border-box}
+body{margin:0;background:#f7f8ff;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;color:#111}
+.app{max-width:430px;margin:auto;background:#fff;min-height:100vh;padding:30px 24px}
+header{display:flex;justify-content:space-between;align-items:center}
+.circle-btn{border:0;background:#f1efff;color:#5548e8;border-radius:50%;width:42px;height:42px;font-size:20px}
+.logo{width:38px;height:38px;object-fit:contain}
+.title{margin-top:35px}
+.title h1{font-size:36px;letter-spacing:-1px;margin:0}
+.title p{color:#999;margin-top:5px;font-size:18px}
+.chart{display:flex;justify-content:center;margin-top:35px}
+.donut{width:260px;height:260px;border-radius:50%;background:conic-gradient(#5548e8 0deg,#54c9dc 260deg,#eee 0deg);display:flex;align-items:center;justify-content:center}
+.donut div{width:190px;height:190px;border-radius:50%;background:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center}
+.donut strong{font-size:52px}
+.donut span{color:#999}
+.summary{margin:30px 0}
+.summary strong{display:block;font-size:28px}
+.summary span{color:#999}
+.workflow-item{display:flex;align-items:center;gap:12px;margin:20px 0}
+.dot{width:42px;height:42px;border-radius:50%;background:#eef0ff}
+.workflow-name{flex:1;font-weight:600}
+.bar{height:7px;background:#eee;border-radius:10px;margin-top:8px}
+.bar span{display:block;height:100%;background:linear-gradient(90deg,#6557ed,#54c9dc);border-radius:10px}
+.count{font-weight:700}
+.activity{margin-top:35px}
+.activity h2{font-size:22px}
+.activity-item{padding:15px;border-radius:18px;background:#f7f8ff;margin-bottom:10px}
