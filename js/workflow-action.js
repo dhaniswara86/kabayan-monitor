@@ -1,61 +1,90 @@
 
-async function jalankanAksiWorkflow(berkasId, tahapTujuan, catatan){
+async function jalankanAksiWorkflow(
+    berkasId,
+    tahapTujuan,
+    catatan
+){
 
-const user = JSON.parse(localStorage.getItem("user"));
+const user = JSON.parse(
+    localStorage.getItem("user")
+);
+
 
 if(!user){
- alert("User belum login");
- return;
+    alert("Sesi login tidak ditemukan");
+    return;
 }
 
 
-// validasi role
+// aturan perpindahan workflow
 
-const izin = {
+const alur = {
 
-"pelaksana":[
-"Disposisi Kasi Pelayanan"
-],
+"Pelaksana":
+{
+    next:"Disposisi Kasi Pelayanan",
+    roles:["pelaksana","admin"]
+},
 
-"kasi_pelayanan":[
-"Penyuluh Pajak"
-],
+"Disposisi Kasi Pelayanan":
+{
+    next:"Penyuluh Pajak",
+    roles:["kasi_pelayanan","admin"]
+},
 
-"penyuluh":[
-"Approval Kepala Seksi"
-],
+"Penyuluh Pajak":
+{
+    next:"Approval Kepala Seksi",
+    roles:["penyuluh","admin"]
+},
 
-"kasi":[
-"Approval Kepala Kantor"
-],
+"Approval Kepala Seksi":
+{
+    next:"Approval Kepala Kantor",
+    roles:["kasi","admin"]
+},
 
-"kepala_kantor":[
-"Arsip"
-],
-
-"admin":[
-"Pelaksana",
-"Disposisi Kasi Pelayanan",
-"Penyuluh Pajak",
-"Approval Kepala Seksi",
-"Approval Kepala Kantor",
-"Arsip"
-]
+"Approval Kepala Kantor":
+{
+    next:"Arsip",
+    roles:["kepala_kantor","admin"]
+}
 
 };
 
 
 
-if(!izin[user.role]?.includes(tahapTujuan)){
+// cek tahap tujuan
 
-alert("Role Anda tidak memiliki kewenangan ke tahap ini");
-return;
+let tahapValid=false;
+
+for(const tahap in alur){
+
+    if(
+        alur[tahap].next===tahapTujuan &&
+        alur[tahap].roles.includes(user.role)
+    ){
+
+        tahapValid=true;
+
+    }
+
+}
+
+
+if(!tahapValid){
+
+    alert(
+    "Anda tidak memiliki kewenangan melakukan aksi ini"
+    );
+
+    return;
 
 }
 
 
 
-const progress = {
+const progressMap={
 
 "Pelaksana":10,
 "Disposisi Kasi Pelayanan":25,
@@ -64,16 +93,35 @@ const progress = {
 "Approval Kepala Kantor":90,
 "Arsip":100
 
-}[tahapTujuan];
+};
 
 
+
+const {data:berkas,error:getError}=await supabaseClient
+.from("berkas")
+.select("*")
+.eq("id",berkasId)
+.single();
+
+
+
+if(getError){
+
+console.error(getError);
+return;
+
+}
+
+
+
+// update berkas
 
 const {error:updateError}=await supabaseClient
 .from("berkas")
 .update({
 
 posisi:tahapTujuan,
-progress:progress
+progress:progressMap[tahapTujuan]
 
 })
 .eq("id",berkasId);
@@ -83,12 +131,13 @@ progress:progress
 if(updateError){
 
 console.error(updateError);
-alert("Gagal update berkas");
 return;
 
 }
 
 
+
+// simpan audit trail
 
 const {error:historyError}=await supabaseClient
 .from("workflow_history")
@@ -96,7 +145,10 @@ const {error:historyError}=await supabaseClient
 
 berkas_id:berkasId,
 tahap:tahapTujuan,
-catatan:catatan || `Diproses oleh ${user.nama}`,
+catatan:
+catatan ||
+`Diproses oleh ${user.nama}`,
+
 user_id:user.id
 
 });
@@ -106,15 +158,15 @@ user_id:user.id
 if(historyError){
 
 console.error(historyError);
-alert("Gagal membuat histori");
 return;
 
 }
 
 
 
-alert("Workflow berhasil dipindahkan");
+alert("Workflow berhasil diperbarui");
 
 location.reload();
+
 
 }
