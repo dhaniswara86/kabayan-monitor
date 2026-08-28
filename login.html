@@ -2,55 +2,89 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
 <title>Kabayan Monitor</title>
+
 <link rel="stylesheet" href="css/login.css">
+
 </head>
+
 <body>
 
-<div class="page">
+<div class="login-page">
 
-<div class="left">
-<div class="logo">KABAYAN</div>
-<h1>Monitor</h1>
+<div class="background-shape shape-1"></div>
+<div class="background-shape shape-2"></div>
+<div class="background-shape shape-3"></div>
+
+
+<section class="intro">
+
+<div class="brand">
+KABAYAN
+</div>
+
+<h1>
+Monitor
+</h1>
+
 <p>
-Kelola workflow berkas secara lebih cepat,
-terstruktur, dan transparan.
+Sistem monitoring workflow
+berkas digital.
 </p>
 
-<div class="stats">
-<div>
-<strong>Workflow</strong>
-<span>Terintegrasi</span>
-</div>
-<div>
-<strong>Audit</strong>
-<span>Real Time</span>
-</div>
-</div>
-</div>
+</section>
 
 
-<div class="card">
 
-<div class="title">
-<h2>Selamat Datang</h2>
-<p>Masuk ke Kabayan Monitor</p>
-</div>
+<section class="login-card">
+
+<h2>
+Selamat Datang
+</h2>
+
+<p>
+Masuk untuk melanjutkan
+</p>
+
+
+<div class="input-group">
 
 <label>Email</label>
-<input id="email" type="email" placeholder="Email Anda">
+
+<input 
+id="email"
+type="email"
+placeholder="Email Anda">
+
+</div>
+
+
+<div class="input-group">
 
 <label>Password</label>
-<input id="password" type="password" placeholder="Password">
 
-<button onclick="login()">Masuk</button>
+<input
+id="password"
+type="password"
+placeholder="Password">
+
+</div>
+
+
+<button onclick="login()">
+Masuk
+</button>
+
 
 <div id="message"></div>
 
-</div>
+
+</section>
 
 </div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="js/supabase.js"></script>
