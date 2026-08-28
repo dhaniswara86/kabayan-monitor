@@ -1,7 +1,5 @@
-
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -9,65 +7,33 @@
 <title>Detail Berkas - Kabayan Monitor</title>
 
 <link rel="stylesheet" href="css/global.css">
-<link rel="stylesheet" href="css/dashboard.css">
-
-<style>
-
-.timeline-item{
-display:flex;
-gap:16px;
-margin:20px 0;
-}
-
-.dot{
-font-size:22px;
-color:#2563eb;
-}
-
-.content{
-border-left:1px solid #ddd;
-padding-left:15px;
-}
-
-</style>
+<link rel="stylesheet" href="css/detail.css">
 
 </head>
-
 
 <body>
 
 <div class="app">
 
-
 <header class="header">
-
-<p class="brand">
-Kabayan Monitor
-</p>
-
-<h1>
-Detail Berkas
-</h1>
-
+<p class="brand">Kabayan Monitor</p>
+<h1>Detail Berkas</h1>
 </header>
 
 
-<section>
+<section class="card">
 
 <h2 id="nama"></h2>
 
-<p>
-Nomor Kasus:
+<p>Nomor Kasus:
 <strong id="nomor"></strong>
 </p>
 
-<p>
-Jenis Permohonan:
+<p>Jenis Permohonan:
 <strong id="jenis"></strong>
 </p>
 
-<p>
-Posisi Saat Ini:
+<p>Posisi Saat Ini:
 <strong id="posisi"></strong>
 </p>
 
@@ -75,18 +41,25 @@ Posisi Saat Ini:
 <strong id="progress"></strong>
 </p>
 
-<p>
-Deadline:
+<p>Deadline:
 <strong id="deadline"></strong>
 </p>
 
+</section>
 
-<h2>
-Riwayat Penyelesaian
-</h2>
+
+<section class="card">
+
+<h2>Riwayat Penyelesaian</h2>
 
 <div id="history"></div>
 
+</section>
+
+
+<section class="card">
+
+<div id="workflow-action"></div>
 
 </section>
 
@@ -97,6 +70,7 @@ Riwayat Penyelesaian
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="js/supabase.js"></script>
 <script src="js/auth-check.js"></script>
+<script src="js/workflow.js"></script>
 <script src="js/detail.js"></script>
 
 </body>
