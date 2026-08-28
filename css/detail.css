@@ -1,0 +1,142 @@
+.card{
+background:white;
+border-radius:28px;
+padding:22px;
+margin-top:18px;
+box-shadow:0 8px 24px rgba(0,0,0,.05);
+}
+
+.tag{
+background:#eff6ff;
+color:#2563eb;
+font-size:12px;
+padding:6px 12px;
+border-radius:20px;
+}
+
+.summary-box{
+display:flex;
+gap:12px;
+margin-top:20px;
+}
+
+.summary-box div{
+background:#f8fafc;
+padding:14px;
+border-radius:18px;
+flex:1;
+}
+
+.summary-box span{
+display:block;
+font-size:12px;
+color:#6473b8;
+}
+
+.summary-box b{
+display:block;
+margin-top:6px;
+}
+
+
+/* KABAYAN WORKFLOW TIMELINE */
+
+.workflow{
+margin-top:32px;
+}
+
+
+.workflow h2{
+font-size:22px;
+margin-bottom:24px;
+}
+
+
+.step{
+display:flex;
+gap:16px;
+position:relative;
+padding:0 0 28px 0;
+margin-left:8px;
+border-left:none;
+}
+
+
+.step:not(:last-child)::before{
+content:"";
+position:absolute;
+left:15px;
+top:34px;
+height:calc(100% - 10px);
+width:2px;
+background:#dbeafe;
+}
+
+
+.icon{
+width:32px;
+height:32px;
+border-radius:50%;
+background:#e5e7eb;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-shrink:0;
+z-index:2;
+font-weight:700;
+}
+
+
+.step.done .icon{
+background:#16a34a;
+color:white;
+}
+
+
+.step.active .icon{
+background:#2563eb;
+color:white;
+}
+
+
+.step strong{
+font-size:16px;
+color:#0f172a;
+display:block;
+}
+
+
+.step p{
+margin:6px 0;
+color:#64748b;
+line-height:1.5;
+}
+
+
+.step small{
+display:block;
+color:#94a3b8;
+margin-top:4px;
+}
+
+
+/* Mobile */
+
+@media(max-width:600px){
+
+.card{
+border-radius:22px;
+padding:18px;
+}
+
+
+.step strong{
+font-size:15px;
+}
+
+
+.workflow h2{
+font-size:20px;
+}
+
+}

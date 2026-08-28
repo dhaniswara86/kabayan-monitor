@@ -1,0 +1,17 @@
+
+.action{
+width:100%;
+padding:16px;
+border:0;
+border-radius:22px;
+background:#2563eb;
+color:white;
+font-size:16px;
+margin-top:15px;
+}
+.history{
+background:#f8fafc;
+padding:14px;
+border-radius:18px;
+margin-top:10px;
+}
