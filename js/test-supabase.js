@@ -1,19 +1,11 @@
 async function testDatabase(){
 
-const {data,error} =
-await supabaseClient
+const hasil = await supabaseClient
 .from("berkas")
 .select("*");
 
-
-console.log(data);
-
-
-if(error){
-
-console.error(error);
-
-}
+console.log("HASIL DATA:", hasil.data);
+console.log("ERROR:", hasil.error);
 
 }
 
